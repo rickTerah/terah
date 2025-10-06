@@ -33,6 +33,43 @@
     --ring: 37 55% 49%;
 
     --radius: 0.5rem;
+
+
+    /* === Sugar High Theme (Solarized) === */
+
+     --base03: #002b36;
+  --base02: #073642;
+  --base01: #586e75;
+  --base00: #657b83;
+  --base0:  #839496;
+  --base1:  #93a1a1;
+  --base2:  #eee8d5;
+  --base3:  #fdf6e3;
+  --yellow: #b58900;
+  --orange: #cb4b16;
+  --red:    #dc322f;
+  --magenta:#d33682;
+  --violet: #6c71c4;
+  --blue:   #268bd2;
+  --cyan:   #2aa198;
+  --green:  #859900;
+
+   --sh-background: var(--base3);
+  --sh-foreground: var(--base00);
+
+  --sh-class: var(--blue);
+  --sh-identifier: var(--base01);
+  --sh-sign: var(--base1);
+  --sh-property: var(--cyan);
+  --sh-entity: var(--green);
+  --sh-jsxliterals: var(--violet);
+  --sh-string: var(--cyan);
+  --sh-keyword: var(--green);
+  --sh-comment: var(--base1);
+  --sh-number: var(--yellow);
+  --sh-null: var(--orange);
+  --sh-break: var(--base00);
+  --sh-space: var(--base00);
   }
 
   .dark {
@@ -63,6 +100,25 @@
     --border: 37 11% 92%;
     --input: 37 11% 92%;
     --ring: 37 55% 49%;
+
+    /* === Sugar High Theme (Solarized) === */
+
+  --sh-background: var(--base03);
+  --sh-foreground: var(--base0);
+
+  --sh-class: var(--blue);
+  --sh-identifier: var(--base1);
+  --sh-sign: var(--base00);
+  --sh-property: var(--cyan);
+  --sh-entity: var(--green);
+  --sh-jsxliterals: var(--violet);
+  --sh-string: var(--cyan);
+  --sh-keyword: var(--green);
+  --sh-comment: var(--base01);
+  --sh-number: var(--yellow);
+  --sh-null: var(--orange);
+  --sh-break: var(--base0);
+  --sh-space: var(--base0);
   }
 }
 
@@ -75,8 +131,47 @@
   }
 }
 
+/* === Code Block Styling === */
+pre {
+  background: var(--sh-background);
+  color: var(--sh-foreground);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 0.75rem; 
+  line-height: 1.25rem;
+  border-radius: 4px;
+  overflow-x: auto;
+  transition: background 0.3s ease, color 0.3s ease;
+  border: 1px solid lightgray;
+}
+
+.dark pre {
+  border: 1px solid gray;
+}
+
+
+
+/* Code inside */
+code {
+  display: block;
+  font-size: 0.75rem;
+  font-family: inherit;
+  white-space: pre;
+}
+
+/* Make sure long lines wrap on mobile */
+@media (max-width: 640px) {
+  pre {
+    font-size: 0.7rem;
+    padding: 0.75rem; 
+  }
+}
+
 body {
   min-height: 100vh;
   background-attachment: fixed;
 }
+
+
+
+
 

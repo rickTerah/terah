@@ -20,26 +20,34 @@ module.exports = {
       colors: {
         gruvbox: {
           dark: {
-            bg: "#202023",
+            bg: "#1e1e1f", // deeper neutral gray for modern feel
+            bgAlt: "#2a2a2d", // alt panels/cards
             fg: "#ebdbb2",
-            red: "#cc241d",
-            green: "#98971a",
-            yellow: "#d79921",
-            blue: "#458588",
-            purple: "#b16286",
-            aqua: "#689d6a",
-            orange: "#d65d0e",
+            fgMuted: "#bdae93",
+            red: "#fb4934",
+            green: "#b8bb26",
+            yellow: "#fabd2f",
+            blue: "#83a598",
+            purple: "#d3869b",
+            aqua: "#8ec07c",
+            orange: "#fe8019",
+            border: "#3c3836",
+            accent: "#d79921", // used for highlights / focus
           },
           light: {
-            bg: "#f1e6db",
+            bg: "#fbf1c7", // warmer and softer than pure white
+            bgAlt: "#f2e5bc", // for contrast sections
             fg: "#3c3836",
-            red: "#cc241d",
-            green: "#98971a",
-            yellow: "#d79921",
-            blue: "#458588",
-            purple: "#b16286",
-            aqua: "#689d6a",
-            orange: "#d65d0e",
+            fgMuted: "#665c54",
+            red: "#9d0006",
+            green: "#79740e",
+            yellow: "#b57614",
+            blue: "#076678",
+            purple: "#8f3f71",
+            aqua: "#427b58",
+            orange: "#af3a03",
+            border: "#d5c4a1",
+            accent: "#b57614",
           },
         },
         border: "hsl(var(--border))",
