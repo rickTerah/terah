@@ -1,0 +1,77 @@
+```tsx
+import { useReducer } from "react";
+import { HTTP_CLIENT } from "../../const";
+import { FullUrl, ValueOf } from "@/types";
+import { API } from "@/config";
+
+type ApiState<T> = {
+  status: ValueOf<typeof HTTP_CLIENT>;
+  loading?: boolean;
+  error?: unknown;
+  data: T;
+};
+
+type ApiAction<T> =
+  | { type: typeof HTTP_CLIENT.FETCHING }
+  | { type: typeof HTTP_CLIENT.FETCHED; payload: T }
+  | { type: typeof HTTP_CLIENT.ERROR; payload: unknown };
+
+type UseApi<T> = [
+  (x: (a?: string) => void) => (e: string) => void,
+  ApiState<T>
+];
+
+export function useApi<T>(api: ValueOf<typeof API>): UseApi<T> {
+  const cache = new Map<FullUrl, T>();
+
+  const initialState: ApiState<T> = {
+    status: HTTP_CLIENT.IDLE,
+    data: {} as T,
+  };
+
+  const [state, dispatch] = useReducer(
+    (state: ApiState<T>, action: ApiAction<T>): ApiState<T> => {
+      switch (action.type) {
+        case HTTP_CLIENT.FETCHING:
+          return { ...initialState, status: action.type };
+        case HTTP_CLIENT.FETCHED:
+          return { ...initialState, status: action.type, data: action.payload };
+        case HTTP_CLIENT.ERROR:
+          return {
+            ...initialState,
+            status: action.type,
+            error: action.payload,
+          };
+        default:
+          return state;
+      }
+    },
+    initialState
+  );
+
+  const lazyFetch =
+    (onSuccess: (e: string) => void) =>
+    async (q: string): Promise<void> => {
+      const fullUrl = (api + q) as FullUrl;
+      dispatch({ type: HTTP_CLIENT.FETCHING });
+      if (cache.has(fullUrl)) {
+        const data = cache.get(fullUrl) as T;
+        dispatch({ type: HTTP_CLIENT.FETCHED, payload: data });
+      } else {
+        try {
+          const res = await fetch(fullUrl);
+          const data = await res.json();
+          cache.set(fullUrl, data);
+          dispatch({ type: HTTP_CLIENT.FETCHED, payload: data });
+        } catch (error) {
+          dispatch({ type: HTTP_CLIENT.ERROR, payload: error });
+        }
+      }
+      onSuccess(q);
+    };
+
+  return [
+    lazyFetch,
+    { ...state, loading: state.status === HTTP_CLIENT.FETCHING },
+  ];
+}
