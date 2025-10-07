@@ -18,9 +18,10 @@ export function ThemeToggle({ className }: { className?: string }) {
         variant="outline"
         size="icon"
         className={cn(
-          "bg-transparent border border-gruvbox-light-fg/20 dark:border-gruvbox-dark-fg/20",
+          `bg-transparent border border-gruvbox-light-fg/20
+          dark:border-gruvbox-dark-fg/20`,
           "backdrop-blur-sm",
-          className
+          className,
         )}
       />
     );
@@ -39,7 +40,7 @@ export function ThemeToggle({ className }: { className?: string }) {
         "border border-gruvbox-light/20 dark:border-gruvbox-dark/20",
         "hover:bg-gruvbox-light/70 dark:hover:bg-gruvbox-dark/70",
         "backdrop-blur-sm",
-        className
+        className,
       )}
     >
       <div className="relative flex items-center justify-center w-5 h-5">
@@ -48,7 +49,7 @@ export function ThemeToggle({ className }: { className?: string }) {
             "absolute w-5 h-5 text-gruvbox-light-fg transition-all duration-500",
             isDark
               ? "rotate-90 scale-0 opacity-0"
-              : "rotate-0 scale-100 opacity-100"
+              : "rotate-0 scale-100 opacity-100",
           )}
         />
         <Sun
@@ -56,7 +57,7 @@ export function ThemeToggle({ className }: { className?: string }) {
             "absolute w-5 h-5 text-gruvbox-dark-fg transition-all duration-500",
             isDark
               ? "rotate-0 scale-100 opacity-100"
-              : "-rotate-90 scale-0 opacity-0"
+              : "-rotate-90 scale-0 opacity-0",
           )}
         />
       </div>
