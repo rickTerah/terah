@@ -49,10 +49,61 @@ export default function InfoCard() {
           Engineer.
         </p>
 
-        <p className="text-gruvbox-light-fg dark:text-gruvbox-dark-fg">
+        <p className="text-gruvbox-light-fg dark:text-gruvbox-dark-fg mb-1">
           <b className="font-bold text-lg">2021 to present</b> - Working at
           Pariti, a talent management platform, as a Head of Engineering.
         </p>
+        <p className="text-gruvbox-light-fg dark:text-gruvbox-dark-fg mb-1">
+          <b className="font-bold text-lg">2022</b> - Led engineering team
+          expansion from 5 to 15+ engineers, implementing scalable development
+          practices.
+        </p>
+        <p className="text-gruvbox-light-fg dark:text-gruvbox-dark-fg mb-1">
+          <b className="font-bold text-lg">2023</b> - Architected and deployed
+          microservices infrastructure improving system reliability by 99.9%.
+        </p>
+        <p className="text-gruvbox-light-fg dark:text-gruvbox-dark-fg mb-1">
+          <b className="font-bold text-lg">2024</b> - Spearheaded AI integration
+          initiatives and established engineering best practices across the
+          organization.
+        </p>
+        <p className="text-gruvbox-light-fg dark:text-gruvbox-dark-fg">
+          <b className="font-bold text-lg">2025</b> - Currently leading digital
+          transformation initiatives and mentoring next-generation engineering
+          leaders.
+        </p>
+      </div>
+
+      <div className="mb-8">
+        <h1
+          className="mb-4 font-bold text-gruvbox-light-fg
+            dark:text-gruvbox-dark-fg text-xl"
+        >
+          {"> Download Resume 📄"}
+        </h1>
+        <div className="flex flex-col sm:flex-row gap-4">
+          <a
+            href="/resume.pdf"
+            download="patrick-mwangi-resume.pdf"
+            className="inline-flex items-center justify-center px-4 py-2
+              bg-gruvbox-light-accent dark:bg-gruvbox-dark-accent text-white
+              rounded-md hover:bg-gruvbox-light-accent/90
+              dark:hover:bg-gruvbox-dark-accent/90 transition-colors"
+          >
+            Download PDF Resume
+          </a>
+          <a
+            href="/resume.docx"
+            download="patrick-mwangi-resume.docx"
+            className="inline-flex items-center justify-center px-4 py-2 border
+              border-gruvbox-light-fg dark:border-gruvbox-dark-fg
+              text-gruvbox-light-fg dark:text-gruvbox-dark-fg rounded-md
+              hover:bg-gruvbox-light-fg/10 dark:hover:bg-gruvbox-dark-fg/10
+              transition-colors"
+          >
+            Download Word Resume
+          </a>
+        </div>
       </div>
 
       <div>
