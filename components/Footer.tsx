@@ -6,6 +6,7 @@ export const Footer = () => {
     <footer
       className="text-gruvbox-light-fg dark:text-gruvbox-dark-fg mb-16 flex
         justify-between items-center"
+      role="contentinfo"
     >
       <div className="">
         <p>
@@ -14,14 +15,30 @@ export const Footer = () => {
       </div>
 
       <div className="flex flex-row">
-        <Link href="" className="ml-4">
+        <Link
+          href="https://github.com/patrickmwangi"
+          className="ml-4"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="GitHub Profile"
+        >
           <Github />
         </Link>
-        <Link href="" className="ml-4">
+        <Link
+          href="https://linkedin.com/in/patrickmwangi"
+          className="ml-4"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="LinkedIn Profile"
+        >
           <Linkedin />
         </Link>
 
-        <Link href="" className="ml-4">
+        <Link
+          href="mailto:patrick@terah.dev"
+          className="ml-4"
+          aria-label="Email Contact"
+        >
           <Mail />
         </Link>
       </div>
