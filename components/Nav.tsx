@@ -1,8 +1,3 @@
-import {
-  NavigationMenu,
-  NavigationMenuItem,
-  NavigationMenuLink,
-} from "@/components/ui/navigation-menu";
 import Link from "next/link";
 import ThemeToggle from "./ThemeToggle";
 
@@ -13,27 +8,34 @@ export const Nav = ({}: { className?: string }) => {
       role="navigation"
       aria-label="Main navigation"
     >
-      <NavigationMenu className="flex-none">
-        <NavigationMenuItem className="mr-8 list-none">
-          <NavigationMenuLink asChild>
-            <Link href="/" className="font-bold">
-              Terah
-            </Link>
-          </NavigationMenuLink>
-        </NavigationMenuItem>
-        <NavigationMenuItem className="list-none">
-          <NavigationMenuLink asChild>
-            <Link href="/blog">Blog</Link>
-          </NavigationMenuLink>
-        </NavigationMenuItem>
-        <NavigationMenuItem className="list-none">
-          <NavigationMenuLink asChild>
-            <Link href="/contact">Contact</Link>
-          </NavigationMenuLink>
-        </NavigationMenuItem>
-      </NavigationMenu>
+      <div className="flex items-center gap-8">
+        <Link
+          href="/"
+          className="font-bold text-gruvbox-light-fg dark:text-gruvbox-dark-fg
+            hover:text-gruvbox-light-accent dark:hover:text-gruvbox-dark-accent
+            transition-colors"
+        >
+          Terah
+        </Link>
+        <Link
+          href="/blog"
+          className="text-gruvbox-light-fg dark:text-gruvbox-dark-fg
+            hover:text-gruvbox-light-accent dark:hover:text-gruvbox-dark-accent
+            transition-colors"
+        >
+          Blog
+        </Link>
+        <Link
+          href="/contact"
+          className="text-gruvbox-light-fg dark:text-gruvbox-dark-fg
+            hover:text-gruvbox-light-accent dark:hover:text-gruvbox-dark-accent
+            transition-colors"
+        >
+          Contact
+        </Link>
+      </div>
 
-      <ThemeToggle className="ml-auto" />
+      <ThemeToggle />
     </nav>
   );
 };

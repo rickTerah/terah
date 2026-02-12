@@ -1,77 +1,30 @@
-```tsx
-import { useReducer } from "react";
-import { HTTP_CLIENT } from "../../const";
-import { FullUrl, ValueOf } from "@/types";
-import { API } from "@/config";
+# Technical Blog
 
-type ApiState<T> = {
-  status: ValueOf<typeof HTTP_CLIENT>;
-  loading?: boolean;
-  error?: unknown;
-  data: T;
-};
+Welcome to my technical blog where I share insights, experiences, and lessons learned from my journey as a Senior Software Engineer and Head of Engineering.
 
-type ApiAction<T> =
-  | { type: typeof HTTP_CLIENT.FETCHING }
-  | { type: typeof HTTP_CLIENT.FETCHED; payload: T }
-  | { type: typeof HTTP_CLIENT.ERROR; payload: unknown };
+## What to Expect
 
-type UseApi<T> = [
-  (x: (a?: string) => void) => (e: string) => void,
-  ApiState<T>
-];
+Here you'll find articles covering:
 
-export function useApi<T>(api: ValueOf<typeof API>): UseApi<T> {
-  const cache = new Map<FullUrl, T>();
+- **Software Architecture**: Design patterns, system design, and scalable solutions
+- **Engineering Leadership**: Team management, technical leadership, and career growth
+- **Web Development**: React, Next.js, TypeScript, and modern frontend practices
+- **Backend & DevOps**: Cloud architecture, databases, and deployment strategies
+- **Technology Trends**: AI integration, blockchain, and emerging technologies
 
-  const initialState: ApiState<T> = {
-    status: HTTP_CLIENT.IDLE,
-    data: {} as T,
-  };
+## Recent Articles
 
-  const [state, dispatch] = useReducer(
-    (state: ApiState<T>, action: ApiAction<T>): ApiState<T> => {
-      switch (action.type) {
-        case HTTP_CLIENT.FETCHING:
-          return { ...initialState, status: action.type };
-        case HTTP_CLIENT.FETCHED:
-          return { ...initialState, status: action.type, data: action.payload };
-        case HTTP_CLIENT.ERROR:
-          return {
-            ...initialState,
-            status: action.type,
-            error: action.payload,
-          };
-        default:
-          return state;
-      }
-    },
-    initialState
-  );
+Coming soon! I'm currently writing articles on:
 
-  const lazyFetch =
-    (onSuccess: (e: string) => void) =>
-    async (q: string): Promise<void> => {
-      const fullUrl = (api + q) as FullUrl;
-      dispatch({ type: HTTP_CLIENT.FETCHING });
-      if (cache.has(fullUrl)) {
-        const data = cache.get(fullUrl) as T;
-        dispatch({ type: HTTP_CLIENT.FETCHED, payload: data });
-      } else {
-        try {
-          const res = await fetch(fullUrl);
-          const data = await res.json();
-          cache.set(fullUrl, data);
-          dispatch({ type: HTTP_CLIENT.FETCHED, payload: data });
-        } catch (error) {
-          dispatch({ type: HTTP_CLIENT.ERROR, payload: error });
-        }
-      }
-      onSuccess(q);
-    };
+1. **Building Scalable Microservices Architecture**
+2. **Leading Engineering Teams: Lessons from 6+ Years**
+3. **Next.js 15 Features Every Developer Should Know**
+4. **TypeScript Best Practices for Large Applications**
 
-  return [
-    lazyFetch,
-    { ...state, loading: state.status === HTTP_CLIENT.FETCHING },
-  ];
-}
+## Stay Connected
+
+Follow along as I explore new technologies, share practical solutions, and document my learning journey. Subscribe to my newsletter to get the latest articles delivered directly to your inbox.
+
+---
+
+_This blog is a work in progress. New articles will be published regularly starting from next month._

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Mail, Send, Github, Linkedin, MapPin } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Button } from "../../components/ui/button";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
