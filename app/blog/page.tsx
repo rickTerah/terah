@@ -1,0 +1,131 @@
+import Link from "next/link";
+import { Badge } from "@/components/ui/badge";
+
+const posts = [
+  {
+    slug: "leading-engineering-teams-lessons",
+    title: "LEADING ENGINEERING TEAMS: LESSONS FROM 6+ YEARS",
+    description:
+      "Key insights and strategies for building and leading high-performing engineering teams in fast-growing startups. Learn how to navigate the challenges of scaling teams while maintaining code quality and team morale.",
+    date: "2024",
+    readTime: "8 MIN",
+    category: "LEADERSHIP",
+  },
+  {
+    slug: "building-scalable-microservices-architecture",
+    title: "BUILDING SCALABLE MICROSERVICES ARCHITECTURE",
+    description:
+      "A comprehensive guide to designing and implementing microservices architecture that scales with your business. Covering service decomposition, communication patterns, deployment strategies, and observability.",
+    date: "2024",
+    readTime: "12 MIN",
+    category: "ARCHITECTURE",
+  },
+];
+
+export default function BlogPage() {
+  return (
+    <div className="space-y-16 pb-16">
+      {/* Header */}
+      <section className="terminal-frame animate-fade-in">
+        <div className="terminal-header">
+          <div className="terminal-dot terminal-dot-red" />
+          <div className="terminal-dot terminal-dot-yellow" />
+          <div className="terminal-dot terminal-dot-green" />
+          <div className="terminal-title">blog.sh</div>
+        </div>
+        <div className="p-6 md:p-8">
+          <div className="space-y-4">
+            <div className="flex items-center gap-2 font-mono text-sm">
+              <span className="section-tag">BLOG</span>
+            </div>
+            <h1 className="text-3xl md:text-4xl font-bold tracking-tight">
+              TECHNICAL WRITINGS
+            </h1>
+            <p className="text-muted-foreground max-w-2xl">
+              INSIGHTS, EXPERIENCES, AND LESSONS LEARNED FROM MY JOURNEY AS A
+              SENIOR SOFTWARE ENGINEER AND HEAD OF ENGINEERING.
+            </p>
+
+            <div className="flex flex-wrap gap-2 pt-2">
+              {["ARCHITECTURE", "LEADERSHIP", "WEB DEVELOPMENT", "DEVOPS"].map(
+                (category) => (
+                  <Badge
+                    key={category}
+                    variant="outline"
+                    className="font-mono text-xs border-border"
+                  >
+                    {category}
+                  </Badge>
+                ),
+              )}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Posts */}
+      <section className="space-y-6">
+        <div className="flex items-center gap-3">
+          <span className="font-mono text-accent">➜</span>
+          <h2 className="text-xl font-bold tracking-tight">ALL POSTS</h2>
+        </div>
+
+        <div className="space-y-4">
+          {posts.map((post, index) => (
+            <Link
+              key={post.slug}
+              href={`/blog/${post.slug}`}
+              className="terminal-frame group hover:border-primary/50
+                transition-all duration-300 animate-slide-up block"
+              style={{ animationDelay: `${index * 75}ms` }}
+            >
+              <div className="p-5 md:p-6">
+                <div
+                  className="flex items-center gap-3 text-sm
+                    text-muted-foreground mb-3 font-mono"
+                >
+                  <Badge
+                    variant="outline"
+                    className="text-xs font-mono border-border"
+                  >
+                    {post.category}
+                  </Badge>
+                  <span>/</span>
+                  <span>{post.date}</span>
+                  <span>/</span>
+                  <span>{post.readTime}</span>
+                </div>
+
+                <h3
+                  className="text-xl font-semibold mb-2 group-hover:text-primary
+                    transition-colors"
+                >
+                  {post.title}
+                </h3>
+
+                <p className="text-muted-foreground text-sm leading-relaxed">
+                  {post.description}
+                </p>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="terminal-frame">
+        <div className="p-6 md:p-8">
+          <div className="flex items-center justify-between">
+            <div>
+              <h3 className="font-semibold mb-1">STAY UPDATED</h3>
+              <p className="text-sm text-muted-foreground">
+                NEW ARTICLES PUBLISHED REGULARLY.
+              </p>
+            </div>
+            <span className="font-mono text-accent">↳</span>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}

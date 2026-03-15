@@ -18,38 +18,6 @@ module.exports = {
     },
     extend: {
       colors: {
-        gruvbox: {
-          dark: {
-            bg: "#1e1e1f", // deeper neutral gray for modern feel
-            bgAlt: "#2a2a2d", // alt panels/cards
-            fg: "#ebdbb2",
-            fgMuted: "#bdae93",
-            red: "#fb4934",
-            green: "#b8bb26",
-            yellow: "#fabd2f",
-            blue: "#83a598",
-            purple: "#d3869b",
-            aqua: "#8ec07c",
-            orange: "#fe8019",
-            border: "#3c3836",
-            accent: "#d79921", // used for highlights / focus
-          },
-          light: {
-            bg: "#fbf1c7", // warmer and softer than pure white
-            bgAlt: "#f2e5bc", // for contrast sections
-            fg: "#3c3836",
-            fgMuted: "#665c54",
-            red: "#9d0006",
-            green: "#79740e",
-            yellow: "#b57614",
-            blue: "#076678",
-            purple: "#8f3f71",
-            aqua: "#427b58",
-            orange: "#af3a03",
-            border: "#d5c4a1",
-            accent: "#b57614",
-          },
-        },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -83,11 +51,23 @@ module.exports = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        chart: {
+          "1": "hsl(var(--chart-1))",
+          "2": "hsl(var(--chart-2))",
+          "3": "hsl(var(--chart-3))",
+          "4": "hsl(var(--chart-4))",
+          "5": "hsl(var(--chart-5))",
+        },
       },
       borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
+        lg: "0",
+        md: "0",
+        sm: "0",
+        xs: "0",
+      },
+      fontFamily: {
+        sans: ["Figtree", "system-ui", "sans-serif"],
+        mono: ["IBM Plex Mono", "monospace"],
       },
       keyframes: {
         "accordion-down": {
@@ -98,15 +78,15 @@ module.exports = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: 0 },
         },
-        float: {
-          "0%, 100%": { transform: "translateY(0)" },
-          "50%": { transform: "translateY(-20px)" },
+        blink: {
+          "0%, 100%": { opacity: 1 },
+          "50%": { opacity: 0 },
         },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        float: "float 6s ease-in-out infinite",
+        blink: "blink 1s step-end infinite",
       },
     },
   },

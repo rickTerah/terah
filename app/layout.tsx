@@ -1,11 +1,8 @@
 import type React from "react";
 import "./globals.css";
 import type { Metadata } from "next";
-import { IBM_Plex_Mono } from "next/font/google";
 import { Providers } from "./providers";
 import { Nav } from "@/components/Nav";
-
-const plexMono = IBM_Plex_Mono({ weight: "400", subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Patrick Mwangi - Senior Software Engineer | Head of Engineering",
@@ -85,24 +82,24 @@ export default function RootLayout({
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
-      <body
-        className={`${plexMono.className} bg-gruvbox-light-bg
-          bg-gruvbox-light-fg/5 dark:bg-gruvbox-dark-bg
-          dark:bg-gruvbox-dark-fg/5 border-gruvbox-light-fg/10`}
-      >
-        <Providers attribute="class" defaultTheme="system" enableSystem>
+      <body className="min-h-screen bg-background antialiased">
+        <Providers attribute="class" defaultTheme="dark" enableSystem>
+          <div className="fixed inset-0 bg-grid opacity-30 pointer-events-none" />
+          <div className="fixed inset-0 bg-gradient-radial pointer-events-none" />
+
           <a
             href="#main-content"
             className="sr-only focus:not-sr-only focus:absolute focus:top-4
-              focus:left-4 bg-gruvbox-light-accent dark:bg-gruvbox-dark-accent
-              text-white px-4 py-2 rounded-md"
+              focus:left-4 bg-primary text-primary-foreground px-4 py-2
+              font-mono text-sm"
           >
             Skip to main content
           </a>
+
           <main
             id="main-content"
-            className="relative flex flex-col justify-center mx-auto max-w-3xl
-              min-h-screen overflow-hidden"
+            className="relative flex flex-col mx-auto max-w-5xl w-full
+              min-h-screen px-6 md:px-8 lg:px-12 py-6"
             role="main"
           >
             <header>
