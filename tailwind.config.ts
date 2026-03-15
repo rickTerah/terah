@@ -58,6 +58,16 @@ module.exports = {
           "4": "hsl(var(--chart-4))",
           "5": "hsl(var(--chart-5))",
         },
+        gruvbox: {
+          "light-fg": "#3c3836",
+          "light-accent": "#fe8019",
+          "light-bg": "#fbf1c7",
+          "light-border": "#d5c4a1",
+          "dark-fg": "#ebdbb2",
+          "dark-accent": "#fe8019",
+          "dark-bg": "#282828",
+          "dark-border": "#665c54",
+        },
       },
       borderRadius: {
         lg: "0",

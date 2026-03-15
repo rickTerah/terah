@@ -1,0 +1,336 @@
+---
+title: "Understanding React Hooks: A Practical Guide"
+description: "Master the fundamental React hooks with practical code examples. Learn useState, useEffect, useContext, useRef, and useCallback with real-world use cases."
+date: "2025-03-15"
+category: "React"
+tags: ["react", "hooks", "javascript", "frontend"]
+readTime: "10 min"
+---
+
+# Understanding React Hooks: A Practical Guide
+
+React Hooks revolutionized how we write React components. They let you use state and other React features without writing a class. Let's explore the fundamental hooks with practical examples.
+
+## useState: Managing Component State
+
+`useState` is the most basic hook for managing state in functional components.
+
+### Counter Example
+
+```jsx
+import { useState } from "react";
+
+function Counter() {
+  const [count, setCount] = useState(0);
+
+  return (
+    <div>
+      <p>Count: {count}</p>
+      <button onClick={() => setCount(count + 1)}>Increment</button>
+    </div>
+  );
+}
+```
+
+### Form Handling
+
+```jsx
+import { useState } from "react";
+
+function ContactForm() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(formData);
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <input
+        name="name"
+        value={formData.name}
+        onChange={handleChange}
+        placeholder="Your name"
+      />
+      <input
+        name="email"
+        value={formData.email}
+        onChange={handleChange}
+        placeholder="Your email"
+      />
+      <button type="submit">Submit</button>
+    </form>
+  );
+}
+```
+
+**Key points:**
+
+- `useState` returns an array with two elements: the current state and a function to update it
+- State updates are asynchronous and batched
+- Use the functional form `setCount(prev => prev + 1)` when new state depends on previous state
+
+---
+
+## useEffect: Handling Side Effects
+
+`useEffect` lets you perform side effects in functional components like data fetching, subscriptions, or manually changing the DOM.
+
+### Basic Data Fetching
+
+```jsx
+import { useState, useEffect } from "react";
+
+function UserProfile({ userId }) {
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchUser() {
+      const response = await fetch(`/api/users/${userId}`);
+      const data = await response.json();
+      setUser(data);
+      setLoading(false);
+    }
+
+    fetchUser();
+  }, [userId]);
+
+  if (loading) return <p>Loading...</p>;
+
+  return (
+    <div>
+      <h2>{user.name}</h2>
+      <p>{user.email}</p>
+    </div>
+  );
+}
+```
+
+### Cleanup on Unmount
+
+```jsx
+import { useState, useEffect } from "react";
+
+function WindowWidth() {
+  const [width, setWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    // Cleanup function - runs when component unmounts
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  return <p>Window width: {width}px</p>;
+}
+```
+
+**Key points:**
+
+- The second argument (dependency array) controls when the effect runs
+- Empty `[]` means run once on mount
+- Always include all values used inside the effect in the dependency array
+- Return a cleanup function to prevent memory leaks
+
+---
+
+## useContext: Consuming Context
+
+`useContext` provides a way to pass data through the component tree without manually passing props.
+
+### Creating and Consuming Context
+
+```jsx
+import { createContext, useContext, useState } from "react";
+
+// Create context
+const ThemeContext = createContext();
+
+function ThemeProvider({ children }) {
+  const [theme, setTheme] = useState("dark");
+
+  const toggleTheme = () => {
+    setTheme((prev) => (prev === "dark" ? "light" : "dark"));
+  };
+
+  return (
+    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+      {children}
+    </ThemeContext.Provider>
+  );
+}
+
+function ThemeButton() {
+  const { theme, toggleTheme } = useContext(ThemeContext);
+
+  return <button onClick={toggleTheme}>Current theme: {theme}</button>;
+}
+
+// Usage
+function App() {
+  return (
+    <ThemeProvider>
+      <ThemeButton />
+    </ThemeProvider>
+  );
+}
+```
+
+**Key points:**
+
+- `useContext` subscribes to context changes
+- When the provider value changes, all consumers re-render
+- Use multiple contexts for different concerns
+
+---
+
+## useRef: Mutable Refs That Don't Trigger Renders
+
+`useRef` returns a mutable ref object whose `.current` property is initialized with the passed argument.
+
+### Focusing an Input
+
+```jsx
+import { useRef } from "react";
+
+function SearchInput() {
+  const inputRef = useRef(null);
+
+  const handleClick = () => {
+    inputRef.current.focus();
+  };
+
+  return (
+    <div>
+      <input ref={inputRef} type="text" placeholder="Search..." />
+      <button onClick={handleClick}>Focus Input</button>
+    </div>
+  );
+}
+```
+
+### Tracking Previous Values
+
+```jsx
+import { useRef, useEffect } from "react";
+
+function PreviousValue({ value }) {
+  const prevRef = useRef();
+
+  useEffect(() => {
+    prevRef.current = value;
+  }, [value]);
+
+  return (
+    <p>
+      Current: {value}, Previous: {prevRef.current}
+    </p>
+  );
+}
+```
+
+**Key points:**
+
+- Changing `.current` doesn't cause a re-render
+- Use refs for values that don't need to trigger renders
+- Perfect for accessing DOM elements directly
+
+---
+
+## useCallback: Memoizing Functions
+
+`useCallback` memoizes a function, returning the same reference unless its dependencies change.
+
+### Preventing Unnecessary Renders
+
+```jsx
+import { useState, useCallback } from "react";
+
+function Parent() {
+  const [count, setCount] = useState(0);
+
+  const handleClick = useCallback(() => {
+    console.log("Button clicked");
+  }, []); // Never changes
+
+  return <Child onClick={handleClick} count={count} />;
+}
+
+function Child({ onClick, count }) {
+  console.log("Child rendered");
+
+  return (
+    <div>
+      <p>Count: {count}</p>
+      <button onClick={onClick}>Click me</button>
+    </div>
+  );
+}
+```
+
+### With Dependencies
+
+```jsx
+import { useState, useCallback } from "react";
+
+function TodoList({ todos }) {
+  const [filter, setFilter] = useState("");
+
+  const filteredTodos = useCallback(() => {
+    return todos.filter((todo) =>
+      todo.text.toLowerCase().includes(filter.toLowerCase()),
+    );
+  }, [todos, filter]);
+
+  return (
+    <div>
+      <input value={filter} onChange={(e) => setFilter(e.target.value)} />
+      {filteredTodos().map((todo) => (
+        <p key={todo.id}>{todo.text}</p>
+      ))}
+    </div>
+  );
+}
+```
+
+**Key points:**
+
+- Use `useCallback` when passing callbacks to optimized child components
+- Only use when necessary - it adds overhead
+- The dependency array works like `useEffect`
+
+---
+
+## Summary
+
+React Hooks provide powerful ways to manage state and side effects:
+
+| Hook          | Purpose                                   |
+| ------------- | ----------------------------------------- |
+| `useState`    | Manage local component state              |
+| `useEffect`   | Handle side effects                       |
+| `useContext`  | Consume React context                     |
+| `useRef`      | Access DOM elements, store mutable values |
+| `useCallback` | Memoize functions                         |
+
+Master these basics, and you'll be well-equipped to handle most React development tasks. Remember: hooks are just functions - practice using them to build intuition!

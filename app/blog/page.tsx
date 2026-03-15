@@ -1,38 +1,15 @@
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
-
-const posts = [
-  {
-    slug: "leading-engineering-teams-lessons",
-    title: "LEADING ENGINEERING TEAMS: LESSONS FROM 6+ YEARS",
-    description:
-      "Key insights and strategies for building and leading high-performing engineering teams in fast-growing startups. Learn how to navigate the challenges of scaling teams while maintaining code quality and team morale.",
-    date: "2024",
-    readTime: "8 MIN",
-    category: "LEADERSHIP",
-  },
-  {
-    slug: "building-scalable-microservices-architecture",
-    title: "BUILDING SCALABLE MICROSERVICES ARCHITECTURE",
-    description:
-      "A comprehensive guide to designing and implementing microservices architecture that scales with your business. Covering service decomposition, communication patterns, deployment strategies, and observability.",
-    date: "2024",
-    readTime: "12 MIN",
-    category: "ARCHITECTURE",
-  },
-];
+import { TerminalFrame } from "@/components/TerminalFrame";
+import { getAllPosts } from "@/lib/mdx";
 
 export default function BlogPage() {
+  const posts = getAllPosts();
+
   return (
     <div className="space-y-16 pb-16">
       {/* Header */}
-      <section className="terminal-frame animate-fade-in">
-        <div className="terminal-header">
-          <div className="terminal-dot terminal-dot-red" />
-          <div className="terminal-dot terminal-dot-yellow" />
-          <div className="terminal-dot terminal-dot-green" />
-          <div className="terminal-title">blog.sh</div>
-        </div>
+      <TerminalFrame title="blog.sh" animate>
         <div className="p-6 md:p-8">
           <div className="space-y-4">
             <div className="flex items-center gap-2 font-mono text-sm">
@@ -61,7 +38,7 @@ export default function BlogPage() {
             </div>
           </div>
         </div>
-      </section>
+      </TerminalFrame>
 
       {/* Posts */}
       <section className="space-y-6">
@@ -88,19 +65,19 @@ export default function BlogPage() {
                     variant="outline"
                     className="text-xs font-mono border-border"
                   >
-                    {post.category}
+                    {post.category.toUpperCase()}
                   </Badge>
                   <span>/</span>
-                  <span>{post.date}</span>
+                  <span>{new Date(post.date).getFullYear()}</span>
                   <span>/</span>
-                  <span>{post.readTime}</span>
+                  <span>{post.readTime.toUpperCase()}</span>
                 </div>
 
                 <h3
                   className="text-xl font-semibold mb-2 group-hover:text-primary
                     transition-colors"
                 >
-                  {post.title}
+                  {post.title.toUpperCase()}
                 </h3>
 
                 <p className="text-muted-foreground text-sm leading-relaxed">
@@ -113,7 +90,7 @@ export default function BlogPage() {
       </section>
 
       {/* CTA */}
-      <section className="terminal-frame">
+      <TerminalFrame>
         <div className="p-6 md:p-8">
           <div className="flex items-center justify-between">
             <div>
@@ -125,7 +102,7 @@ export default function BlogPage() {
             <span className="font-mono text-accent">↳</span>
           </div>
         </div>
-      </section>
+      </TerminalFrame>
     </div>
   );
 }

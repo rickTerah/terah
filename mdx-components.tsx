@@ -2,6 +2,8 @@ import React, { ComponentPropsWithoutRef } from "react";
 import Link from "next/link";
 import { highlight } from "sugar-high";
 
+type PreProps = ComponentPropsWithoutRef<"pre">;
+
 type HeadingProps = ComponentPropsWithoutRef<"h1">;
 type ParagraphProps = ComponentPropsWithoutRef<"p">;
 type ListProps = ComponentPropsWithoutRef<"ul">;
@@ -90,7 +92,7 @@ const components = {
 
       return (
         <code
-          className="block font-mono text-sm leading-relaxed p-4"
+          className="sugar-high"
           dangerouslySetInnerHTML={{ __html: highlighted }}
         />
       );
@@ -121,10 +123,14 @@ const components = {
   ),
   blockquote: (props: BlockquoteProps) => (
     <blockquote
-      className="ml-[0.075em] border-l-3 border-gray-300 pl-4 text-gray-700 dark:border-zinc-600 dark:text-zinc-300"
+      className="ml-[0.075em] border-l-3 border-gray-300 pl-4 text-gray-700
+        dark:border-zinc-600 dark:text-zinc-300"
       {...props}
     />
   ),
+  pre: ({ children, ...props }: PreProps) => {
+    return <pre {...props}>{children}</pre>;
+  },
 };
 
 declare global {
