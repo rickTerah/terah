@@ -1,5 +1,5 @@
-import { ExternalLink, Github, Calendar } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { ExternalLink, Github } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
 
 interface Project {
   title: string;
@@ -61,109 +61,105 @@ const projects: Project[] = [
   },
 ];
 
-const statusBadge = (status: Project["status"]) => (
-  <span
-    className={`text-xs px-2 py-1 rounded-full font-medium ${
-      status === "completed"
-        ? "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200"
-        : "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200"
-      }`}
-  >
-    {status === "completed" ? "Completed" : "Ongoing"}
-  </span>
-);
-
-export default function Projects() {
+export function Projects() {
   return (
-    <div className="mb-8">
-      <h1
-        className="mb-6 font-bold text-gruvbox-light-fg
-          dark:text-gruvbox-dark-fg text-xl"
-      >
-        {"> Featured Projects 🚀"}
-      </h1>
+    <section className="space-y-10">
+      <div className="flex items-center gap-3">
+        <span className="font-mono text-accent">➜</span>
+        <h2 className="text-2xl font-bold tracking-tight">PROJECTS</h2>
+      </div>
 
-      <div className="space-y-6">
+      <div className="space-y-4">
         {projects.map((project, index) => (
           <div
-            key={index}
-            className="border border-gruvbox-light-border
-              dark:border-gruvbox-dark-border rounded-lg p-6
-              bg-gruvbox-light-bg/50 dark:bg-gruvbox-dark-bg/50 hover:shadow-lg
-              transition-shadow duration-300"
+            key={project.title}
+            className="terminal-frame group hover:border-primary/50
+              transition-all duration-300 animate-slide-up"
+            style={{ animationDelay: `${index * 75}ms` }}
           >
-            <div className="flex justify-between items-start mb-3">
-              <div className="flex-1">
-                <h2
-                  className="text-lg font-semibold text-gruvbox-light-fg
-                    dark:text-gruvbox-dark-fg mb-1"
-                >
-                  {project.title}
-                </h2>
-                <div
-                  className="flex items-center gap-3 text-sm
-                    text-gruvbox-light-fg/70 dark:text-gruvbox-dark-fg/70"
-                >
-                  <div className="flex items-center gap-1">
-                    <Calendar className="w-3 h-3" />
+            <div className="p-5 md:p-6">
+              {/* Header */}
+              <div
+                className="flex flex-col sm:flex-row sm:items-start
+                  justify-between gap-4 mb-4"
+              >
+                <div className="flex-1">
+                  <div className="flex items-center gap-3 mb-2">
+                    <span className="font-mono text-muted-foreground text-sm">
+                      {index + 1}.
+                    </span>
+                    <h3
+                      className="text-lg font-semibold group-hover:text-primary
+                        transition-colors"
+                    >
+                      {project.title}
+                    </h3>
+                    <Badge
+                      variant="outline"
+                      className="text-xs font-mono border-border"
+                    >
+                      {project.status.toUpperCase()}
+                    </Badge>
+                  </div>
+                  <div
+                    className="flex items-center gap-2 text-sm
+                      text-muted-foreground font-mono"
+                  >
                     <span>{project.date}</span>
                   </div>
-                  {statusBadge(project.status)}
+                </div>
+
+                {/* Links */}
+                <div className="flex items-center gap-1">
+                  {project.link && (
+                    <a
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-2 border border-border hover:border-primary
+                        hover:text-primary transition-all"
+                      title="View live demo"
+                    >
+                      <ExternalLink className="h-4 w-4" />
+                    </a>
+                  )}
+                  {project.github && (
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-2 border border-border hover:border-primary
+                        hover:text-primary transition-all"
+                      title="View source"
+                    >
+                      <Github className="h-4 w-4" />
+                    </a>
+                  )}
                 </div>
               </div>
-            </div>
 
-            <p
-              className="text-gruvbox-light-fg dark:text-gruvbox-dark-fg mb-4
-                leading-relaxed"
-            >
-              {project.description}
-            </p>
+              {/* Description */}
+              <p className="text-muted-foreground text-sm leading-relaxed mb-4">
+                {project.description}
+              </p>
 
-            <div className="flex flex-wrap gap-2 mb-4">
-              {project.technologies.map((tech, techIndex) => (
-                <span
-                  key={techIndex}
-                  className="text-xs px-2 py-1 bg-gruvbox-light-fg/10
-                    dark:bg-gruvbox-dark-fg/10 text-gruvbox-light-fg
-                    dark:text-gruvbox-dark-fg rounded"
-                >
-                  {tech}
-                </span>
-              ))}
-            </div>
-
-            <div className="flex gap-2">
-              {project.link && (
-                <Button variant="outline" size="sm" asChild>
-                  <a
-                    href={project.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2"
+              {/* Technologies */}
+              <div className="flex flex-wrap gap-2">
+                {project.technologies.map((tech) => (
+                  <span
+                    key={tech}
+                    className="px-2 py-1 border border-border text-xs font-mono
+                      hover:border-primary/50 hover:text-primary
+                      transition-colors"
                   >
-                    <ExternalLink className="w-3 h-3" />
-                    Live Demo
-                  </a>
-                </Button>
-              )}
-              {project.github && (
-                <Button variant="outline" size="sm" asChild>
-                  <a
-                    href={project.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2"
-                  >
-                    <Github className="w-3 h-3" />
-                    GitHub
-                  </a>
-                </Button>
-              )}
+                    {tech}
+                  </span>
+                ))}
+              </div>
             </div>
           </div>
         ))}
       </div>
-    </div>
+    </section>
   );
 }

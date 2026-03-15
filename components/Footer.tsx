@@ -1,47 +1,52 @@
 import { Github, Linkedin, Mail } from "lucide-react";
 import Link from "next/link";
 
-export const Footer = () => {
+const socialLinks = [
+  { href: "https://github.com/patrickmwangi", icon: Github, label: "GitHub" },
+  {
+    href: "https://linkedin.com/in/patrickmwangi",
+    icon: Linkedin,
+    label: "LinkedIn",
+  },
+  { href: "mailto:patrick@terah.dev", icon: Mail, label: "Email" },
+];
+
+export function Footer() {
   return (
-    <footer
-      className="text-gruvbox-light-fg dark:text-gruvbox-dark-fg mb-16 flex
-        justify-between items-center"
-      role="contentinfo"
-    >
-      <div className="">
-        <p>
-          &copy; {new Date().getFullYear()} Patrick Mwangi. All rights reserved.
-        </p>
-      </div>
+    <footer className="border-t border-border pt-8 mt-24" role="contentinfo">
+      <div
+        className="flex flex-col sm:flex-row items-center justify-between gap-6"
+      >
+        <div
+          className="flex items-center gap-2 font-mono text-sm
+            text-muted-foreground"
+        >
+          <span>© {new Date().getFullYear()}</span>
+          <span className="text-border">|</span>
+          <span>PATRICK MWANGI</span>
+          <span className="text-border">|</span>
+          <span>ALL RIGHTS RESERVED</span>
+        </div>
 
-      <div className="flex flex-row">
-        <Link
-          href="https://github.com/patrickmwangi"
-          className="ml-4"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="GitHub Profile"
-        >
-          <Github />
-        </Link>
-        <Link
-          href="https://linkedin.com/in/patrickmwangi"
-          className="ml-4"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="LinkedIn Profile"
-        >
-          <Linkedin />
-        </Link>
-
-        <Link
-          href="mailto:patrick@terah.dev"
-          className="ml-4"
-          aria-label="Email Contact"
-        >
-          <Mail />
-        </Link>
+        <div className="flex items-center gap-1">
+          {socialLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className="p-2 border border-border hover:border-primary
+                hover:text-primary transition-all font-mono text-xs"
+              target={link.href.startsWith("http") ? "_blank" : undefined}
+              rel={
+                link.href.startsWith("http") ? "noopener noreferrer" : undefined
+              }
+              aria-label={link.label}
+              title={link.label}
+            >
+              <link.icon className="h-4 w-4" />
+            </Link>
+          ))}
+        </div>
       </div>
     </footer>
   );
-};
+}

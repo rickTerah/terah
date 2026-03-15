@@ -18,9 +18,5 @@ export default function BlogLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return (
-    <article className="prose prose-gruvbox max-w-none">
-      <div className="min-h-screen">{children}</div>
-    </article>
-  );
+  return <article className="min-h-screen">{children}</article>;
 }
