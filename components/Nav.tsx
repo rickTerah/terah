@@ -6,11 +6,11 @@ import { ThemeToggle } from "@/components/ThemeToggle";
 import { cn } from "@/lib/utils";
 
 const navItems = [
-  { href: "/", label: "~", title: "Home" },
-  { href: "/experience", label: "~/experience", title: "Experience" },
-  { href: "/projects", label: "~/projects", title: "Projects" },
-  { href: "/blog", label: "~/blog", title: "Blog" },
-  { href: "/contact", label: "~/contact", title: "Contact" },
+  { href: "/", label: "/", title: "Home" },
+  { href: "/experience", label: "/experience", title: "Experience" },
+  { href: "/projects", label: "/projects", title: "Projects" },
+  { href: "/blog", label: "/blog", title: "Blog" },
+  { href: "/contact", label: "/contact", title: "Contact" },
 ];
 
 export function Nav() {
