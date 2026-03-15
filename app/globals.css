@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -32,6 +32,22 @@
     --chart-3: 270 70% 65%;
     --chart-4: 45 95% 60%;
     --chart-5: 0 0% 60%;
+
+    /* Code syntax highlighting - Dark theme */
+    --code-bg: 220 15% 5%;
+    --code-text: 145 50% 75%;
+
+    /* Sugar-high CSS variables for dark theme */
+    --sh-keyword: hsl(280, 70%, 70%);
+    --sh-string: hsl(145, 60%, 65%);
+    --sh-class: hsl(45, 80%, 65%);
+    --sh-identifier: hsl(200, 70%, 70%);
+    --sh-sign: hsl(220, 15%, 65%);
+    --sh-property: hsl(200, 70%, 70%);
+    --sh-entity: hsl(185, 70%, 65%);
+    --sh-jsxliterals: hsl(340, 70%, 70%);
+    --sh-comment: hsl(220, 10%, 50%);
+    --sh-space: hsl(145, 50%, 75%);
   }
 
   .light {
@@ -55,6 +71,22 @@
     --border: 220 12% 85%;
     --input: 220 12% 85%;
     --ring: 145 70% 40%;
+
+    /* Code syntax highlighting - Light theme */
+    --code-bg: 220 15% 12%;
+    --code-text: 220 10% 85%;
+
+    /* Sugar-high CSS variables for light theme */
+    --sh-keyword: hsl(280, 70%, 65%);
+    --sh-string: hsl(145, 60%, 60%);
+    --sh-class: hsl(45, 80%, 65%);
+    --sh-identifier: hsl(200, 70%, 65%);
+    --sh-sign: hsl(220, 15%, 70%);
+    --sh-property: hsl(200, 70%, 65%);
+    --sh-entity: hsl(185, 70%, 65%);
+    --sh-jsxliterals: hsl(340, 70%, 65%);
+    --sh-comment: hsl(220, 10%, 60%);
+    --sh-space: hsl(220, 10%, 85%);
   }
 }
 
@@ -69,17 +101,40 @@
 
   body {
     @apply bg-background text-foreground antialiased;
-    font-family: "Figtree", system-ui, sans-serif;
+    font-family:
+      "Inter",
+      system-ui,
+      -apple-system,
+      sans-serif;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Instrument Sans", system-ui, sans-serif;
+    font-weight: 600;
+    letter-spacing: -0.02em;
   }
 
   code,
   pre,
   .font-mono {
-    font-family: "IBM Plex Mono", monospace;
+    font-family: "IBM Plex Mono", "Consolas", "Monaco", monospace;
   }
 }
 
 @layer utilities {
+  .font-display {
+    font-family: "Instrument Sans", system-ui, sans-serif;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
   .animate-fade-in {
     animation: fadeIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
@@ -404,20 +459,109 @@
   }
 }
 
+/* Additional syntax highlighting for non-Shiki code blocks */
+pre code .token.comment,
+pre code .token.prolog,
+pre code .token.doctype,
+pre code .token.cdata {
+  color: hsl(var(--code-comment));
+  font-style: italic;
+}
+
+pre code .token.keyword,
+pre code .token.control,
+pre code .token.directive,
+pre code .token.unit {
+  color: hsl(var(--code-keyword));
+  font-weight: 500;
+}
+
+pre code .token.string,
+pre code .token.attr-value,
+pre code .token.char,
+pre code .token.builtin {
+  color: hsl(var(--code-string));
+}
+
+pre code .token.function,
+pre code .token.method {
+  color: hsl(var(--code-function));
+}
+
+pre code .token.number,
+pre code .token.boolean {
+  color: hsl(var(--code-number));
+}
+
+pre code .token.operator,
+pre code .token.entity,
+pre code .token.url {
+  color: hsl(var(--code-operator));
+}
+
+pre code .token.punctuation {
+  color: hsl(var(--code-punctuation));
+}
+
+pre code .token.class-name,
+pre code .token.type-name {
+  color: hsl(var(--code-class));
+}
+
+pre code .token.property,
+pre code .token.parameter {
+  color: hsl(var(--code-property));
+}
+
+pre code .token.tag {
+  color: hsl(var(--code-tag));
+}
+
+pre code .token.attr-name {
+  color: hsl(var(--code-attr-name));
+}
+
+pre code .token.variable,
+pre code .token.this {
+  color: hsl(var(--code-variable));
+}
+
+pre code .token.constant {
+  color: hsl(var(--code-constant));
+}
+
+pre code .token.regex,
+pre code .token.important {
+  color: hsl(var(--code-regex));
+  font-weight: 500;
+}
+
+pre code .token.deleted {
+  color: hsl(var(--destructive));
+}
+
+pre code .token.inserted {
+  color: hsl(var(--primary));
+}
+
 pre {
-  background: hsl(var(--muted));
-  color: hsl(var(--foreground));
-  font-family: "IBM Plex Mono", monospace;
-  font-size: 0.75rem;
-  line-height: 1.6;
+  background: hsl(var(--code-bg));
+  color: hsl(var(--code-text));
+  font-family: "IBM Plex Mono", "Consolas", "Monaco", monospace;
+  font-size: 0.875rem;
+  line-height: 1.7;
   border: 1px solid hsl(var(--border));
+  padding: 1.25rem;
+  overflow-x: auto;
+  tab-size: 2;
 }
 
 code {
-  font-family: "IBM Plex Mono", monospace;
+  font-family: "IBM Plex Mono", "Consolas", "Monaco", monospace;
   font-size: 0.875em;
   background: hsl(var(--muted));
-  padding: 0.15em 0.4em;
+  padding: 0.2em 0.4em;
+  border: 1px solid hsl(var(--border) / 0.5);
 }
 
 pre code {
@@ -425,12 +569,26 @@ pre code {
   background: transparent;
   padding: 0;
   white-space: pre;
+  border: none;
+  font-size: inherit;
+  color: hsl(var(--code-text));
+}
+
+pre code * {
+  font-family: "IBM Plex Mono", "Consolas", "Monaco", monospace;
 }
 
 @media (max-width: 640px) {
   pre {
-    font-size: 0.7rem;
+    font-size: 0.8125rem;
+    padding: 1rem;
   }
+}
+
+/* Shiki syntax highlighting */
+.shiki,
+.shiki span {
+  font-family: "IBM Plex Mono", "Consolas", "Monaco", monospace !important;
 }
 
 .shiki {
@@ -450,18 +608,33 @@ pre code {
   font-family: "IBM Plex Mono", monospace !important;
 }
 
-.shiki span {
-  color: var(--shiki-light) !important;
+/* Ensure proper scrollbar styling */
+.shiki::-webkit-scrollbar {
+  height: 8px;
 }
 
-.dark .shiki span {
-  color: var(--shiki-dark) !important;
+.shiki::-webkit-scrollbar-track {
+  background: hsl(var(--muted));
 }
 
-.shiki {
-  background-color: var(--shiki-light-bg) !important;
+.shiki::-webkit-scrollbar-thumb {
+  background: hsl(var(--border));
 }
 
-.dark .shiki {
-  background-color: var(--shiki-dark-bg) !important;
+.shiki::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary) / 0.5);
+}
+
+/* Sugar-high syntax highlighting */
+code.sugar-high {
+  display: block;
+  font-family: "IBM Plex Mono", "Consolas", "Monaco", monospace;
+}
+
+code.sugar-high .sh__token--comment {
+  font-style: italic;
+}
+
+code.sugar-high .sh__token--keyword {
+  font-weight: 500;
 }

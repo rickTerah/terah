@@ -1,3 +1,5 @@
+import { TerminalFrame } from "@/components/TerminalFrame";
+
 const interests = [
   "ART",
   "MUSIC",
@@ -17,7 +19,7 @@ export function InterestsSection() {
         <h2 className="text-2xl font-bold tracking-tight">INTERESTS</h2>
       </div>
 
-      <div className="terminal-frame">
+      <TerminalFrame>
         <div className="p-6">
           <div className="flex flex-wrap gap-2">
             {interests.map((interest, index) => (
@@ -33,7 +35,7 @@ export function InterestsSection() {
             ))}
           </div>
         </div>
-      </div>
+      </TerminalFrame>
     </section>
   );
 }

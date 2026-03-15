@@ -14,6 +14,9 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
+import { TerminalFrame } from "@/components/TerminalFrame";
+
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/your-form-id";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -37,9 +40,23 @@ export default function ContactPage() {
     e.preventDefault();
     setIsSubmitting(true);
     try {
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-      setSubmitStatus("success");
-      setFormData({ name: "", email: "", subject: "", message: "" });
+      const response = await fetch(FORMSPREE_ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+        }),
+      });
+
+      if (response.ok) {
+        setSubmitStatus("success");
+        setFormData({ name: "", email: "", subject: "", message: "" });
+      } else {
+        setSubmitStatus("error");
+      }
     } catch {
       setSubmitStatus("error");
     } finally {
@@ -50,13 +67,7 @@ export default function ContactPage() {
   return (
     <div className="space-y-16 pb-16">
       {/* Header */}
-      <section className="terminal-frame animate-fade-in">
-        <div className="terminal-header">
-          <div className="terminal-dot terminal-dot-red" />
-          <div className="terminal-dot terminal-dot-yellow" />
-          <div className="terminal-dot terminal-dot-green" />
-          <div className="terminal-title">contact.sh</div>
-        </div>
+      <TerminalFrame title="contact.sh" animate>
         <div className="p-6 md:p-8">
           <div className="space-y-4">
             <div className="flex items-center gap-2 font-mono text-sm">
@@ -71,7 +82,7 @@ export default function ContactPage() {
             </p>
           </div>
         </div>
-      </section>
+      </TerminalFrame>
 
       <div className="grid lg:grid-cols-5 gap-8">
         {/* Contact Info */}
@@ -88,11 +99,11 @@ export default function ContactPage() {
                     EMAIL
                   </p>
                   <a
-                    href="mailto:patrick@terah.dev"
+                    href="mailto:patrickmwangi554@gmail.com"
                     className="hover:text-primary transition-colors font-mono
                       text-sm"
                   >
-                    patrick@terah.dev
+                    patrickmwangi554@gmail.com
                   </a>
                 </div>
               </div>
@@ -115,7 +126,7 @@ export default function ContactPage() {
           <div className="terminal-frame">
             <div className="p-3 space-y-1">
               <a
-                href="https://linkedin.com/in/patrickmwangi"
+                href="https://www.linkedin.com/in/mwangipatrickn/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-3 p-3 border border-transparent
@@ -134,7 +145,7 @@ export default function ContactPage() {
                 </span>
               </a>
               <a
-                href="https://github.com/patrickmwangi"
+                href="https://github.com/rickTerah"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-3 p-3 border border-transparent
@@ -158,13 +169,7 @@ export default function ContactPage() {
 
         {/* Contact Form */}
         <div className="lg:col-span-3">
-          <div className="terminal-frame h-full">
-            <div className="terminal-header">
-              <div className="terminal-dot terminal-dot-red" />
-              <div className="terminal-dot terminal-dot-yellow" />
-              <div className="terminal-dot terminal-dot-green" />
-              <div className="terminal-title">message.sh</div>
-            </div>
+          <TerminalFrame title="message.sh" className="h-full">
             <div className="p-5 md:p-6">
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="grid sm:grid-cols-2 gap-4">
@@ -270,7 +275,7 @@ export default function ContactPage() {
                 </Button>
               </form>
             </div>
-          </div>
+          </TerminalFrame>
         </div>
       </div>
     </div>

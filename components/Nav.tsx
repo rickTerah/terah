@@ -32,7 +32,7 @@ export function Nav() {
             className="font-mono text-sm text-muted-foreground
               group-hover:text-primary transition-colors"
           >
-            <span className="text-accent">➜</span> ~/portfolio
+            <span className="text-accent">➜</span> ~/terah
           </span>
           <span className="text-primary animate-cursor-blink">_</span>
         </Link>

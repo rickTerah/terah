@@ -1,16 +1,11 @@
 import { Button } from "@/components/ui/button";
+import { TerminalFrame } from "@/components/TerminalFrame";
 import { Download, FileText } from "lucide-react";
 
 export function AboutSection() {
   return (
     <section className="space-y-8">
-      <div className="terminal-frame">
-        <div className="terminal-header">
-          <div className="terminal-dot terminal-dot-red" />
-          <div className="terminal-dot terminal-dot-yellow" />
-          <div className="terminal-dot terminal-dot-green" />
-          <div className="terminal-title">about.md</div>
-        </div>
+      <TerminalFrame title="about.md">
         <div className="p-6 md:p-8">
           <div className="space-y-4">
             <div className="flex items-center gap-2 font-mono text-sm">
@@ -22,7 +17,7 @@ export function AboutSection() {
             >
               I&apos;m a software engineer with over six years of experience,
               passionate about building impactful digital solutions. I enjoy
-              tackling complex challenges, especially those rooted in real-world
+              tackling complex challenges, especially rooted in real-world
               problem-solving. From ideation to deployment, I&apos;ve developed
               applications used across the country, helping shape how people
               live, work, and connect.
@@ -44,7 +39,7 @@ export function AboutSection() {
             </div>
           </div>
         </div>
-      </div>
+      </TerminalFrame>
     </section>
   );
 }

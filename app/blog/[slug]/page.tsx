@@ -21,10 +21,7 @@ async function CodeBlock({
   const lang = className?.replace("language-", "") || "javascript";
   const html = await codeToHtml(children, {
     lang: lang === "jsx" ? "typescript" : lang,
-    themes: {
-      light: "github-light",
-      dark: "github-dark",
-    },
+    theme: "github-dark",
   });
 
   return (

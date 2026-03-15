@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
+import { TerminalFrame } from "@/components/TerminalFrame";
 import { getAllPosts } from "@/lib/mdx";
 
 export default function BlogPage() {
@@ -8,13 +9,7 @@ export default function BlogPage() {
   return (
     <div className="space-y-16 pb-16">
       {/* Header */}
-      <section className="terminal-frame animate-fade-in">
-        <div className="terminal-header">
-          <div className="terminal-dot terminal-dot-red" />
-          <div className="terminal-dot terminal-dot-yellow" />
-          <div className="terminal-dot terminal-dot-green" />
-          <div className="terminal-title">blog.sh</div>
-        </div>
+      <TerminalFrame title="blog.sh" animate>
         <div className="p-6 md:p-8">
           <div className="space-y-4">
             <div className="flex items-center gap-2 font-mono text-sm">
@@ -43,7 +38,7 @@ export default function BlogPage() {
             </div>
           </div>
         </div>
-      </section>
+      </TerminalFrame>
 
       {/* Posts */}
       <section className="space-y-6">
@@ -95,7 +90,7 @@ export default function BlogPage() {
       </section>
 
       {/* CTA */}
-      <section className="terminal-frame">
+      <TerminalFrame>
         <div className="p-6 md:p-8">
           <div className="flex items-center justify-between">
             <div>
@@ -107,7 +102,7 @@ export default function BlogPage() {
             <span className="font-mono text-accent">↳</span>
           </div>
         </div>
-      </section>
+      </TerminalFrame>
     </div>
   );
 }
