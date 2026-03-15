@@ -1,26 +1,9 @@
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
-
-const posts = [
-  {
-    slug: "leading-engineering-teams-lessons",
-    title: "LEADING ENGINEERING TEAMS: LESSONS FROM 6+ YEARS",
-    description:
-      "Key insights and strategies for building and leading high-performing engineering teams in fast-growing startups.",
-    date: "2024",
-    readTime: "8 MIN",
-  },
-  {
-    slug: "building-scalable-microservices-architecture",
-    title: "BUILDING SCALABLE MICROSERVICES ARCHITECTURE",
-    description:
-      "A comprehensive guide to designing and implementing microservices architecture that scales with your business.",
-    date: "2024",
-    readTime: "12 MIN",
-  },
-];
+import { getAllPosts } from "@/lib/mdx";
 
 export function BlogSection() {
+  const posts = getAllPosts().slice(0, 2);
   return (
     <section className="space-y-8">
       <div className="flex items-center justify-between">
@@ -55,7 +38,7 @@ export function BlogSection() {
                   variant="outline"
                   className="text-xs font-mono border-border"
                 >
-                  {post.date}
+                  {new Date(post.date).getFullYear()}
                 </Badge>
                 <span>/</span>
                 <span>{post.readTime}</span>

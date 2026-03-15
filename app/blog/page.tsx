@@ -1,28 +1,10 @@
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
-
-const posts = [
-  {
-    slug: "leading-engineering-teams-lessons",
-    title: "LEADING ENGINEERING TEAMS: LESSONS FROM 6+ YEARS",
-    description:
-      "Key insights and strategies for building and leading high-performing engineering teams in fast-growing startups. Learn how to navigate the challenges of scaling teams while maintaining code quality and team morale.",
-    date: "2024",
-    readTime: "8 MIN",
-    category: "LEADERSHIP",
-  },
-  {
-    slug: "building-scalable-microservices-architecture",
-    title: "BUILDING SCALABLE MICROSERVICES ARCHITECTURE",
-    description:
-      "A comprehensive guide to designing and implementing microservices architecture that scales with your business. Covering service decomposition, communication patterns, deployment strategies, and observability.",
-    date: "2024",
-    readTime: "12 MIN",
-    category: "ARCHITECTURE",
-  },
-];
+import { getAllPosts } from "@/lib/mdx";
 
 export default function BlogPage() {
+  const posts = getAllPosts();
+
   return (
     <div className="space-y-16 pb-16">
       {/* Header */}
@@ -88,19 +70,19 @@ export default function BlogPage() {
                     variant="outline"
                     className="text-xs font-mono border-border"
                   >
-                    {post.category}
+                    {post.category.toUpperCase()}
                   </Badge>
                   <span>/</span>
-                  <span>{post.date}</span>
+                  <span>{new Date(post.date).getFullYear()}</span>
                   <span>/</span>
-                  <span>{post.readTime}</span>
+                  <span>{post.readTime.toUpperCase()}</span>
                 </div>
 
                 <h3
                   className="text-xl font-semibold mb-2 group-hover:text-primary
                     transition-colors"
                 >
-                  {post.title}
+                  {post.title.toUpperCase()}
                 </h3>
 
                 <p className="text-muted-foreground text-sm leading-relaxed">

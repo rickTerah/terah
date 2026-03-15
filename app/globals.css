@@ -433,6 +433,35 @@ pre code {
   }
 }
 
-body {
-  min-height: 100vh;
+.shiki {
+  padding: 1.25rem !important;
+  font-size: 0.875rem !important;
+  line-height: 1.7 !important;
+  overflow-x: auto;
+}
+
+.shiki code {
+  background: transparent !important;
+  padding: 0 !important;
+  font-size: inherit !important;
+}
+
+.shiki code span {
+  font-family: "IBM Plex Mono", monospace !important;
+}
+
+.shiki span {
+  color: var(--shiki-light) !important;
+}
+
+.dark .shiki span {
+  color: var(--shiki-dark) !important;
+}
+
+.shiki {
+  background-color: var(--shiki-light-bg) !important;
+}
+
+.dark .shiki {
+  background-color: var(--shiki-dark-bg) !important;
 }

@@ -1,7 +1,8 @@
 import Image from "next/image";
+import Link from "next/link";
 import laptop from "@/public/img/laptop.png";
-import { InfoCard } from "@/components/InfoCard";
-import { Projects } from "@/components/Projects";
+import { AboutSection } from "@/components/AboutSection";
+import { InterestsSection } from "@/components/InterestsSection";
 import { BlogSection } from "@/components/BlogSection";
 import { Footer } from "@/components/Footer";
 import { ChevronDown } from "lucide-react";
@@ -93,6 +94,37 @@ export default function Home() {
                     </span>
                   ))}
                 </div>
+
+                {/* Navigation Links */}
+                <div
+                  className="flex flex-wrap gap-4 pt-4 animate-slide-up
+                    animation-delay-225"
+                >
+                  <Link
+                    href="/experience"
+                    className="px-4 py-2 border border-border font-mono text-sm
+                      hover:border-primary/50 hover:text-primary
+                      transition-colors"
+                  >
+                    → experience
+                  </Link>
+                  <Link
+                    href="/projects"
+                    className="px-4 py-2 border border-border font-mono text-sm
+                      hover:border-primary/50 hover:text-primary
+                      transition-colors"
+                  >
+                    → projects
+                  </Link>
+                  <Link
+                    href="/blog"
+                    className="px-4 py-2 border border-border font-mono text-sm
+                      hover:border-primary/50 hover:text-primary
+                      transition-colors"
+                  >
+                    → blog
+                  </Link>
+                </div>
               </div>
 
               {/* Image Terminal */}
@@ -146,8 +178,8 @@ export default function Home() {
         </div>
       </section>
 
-      <InfoCard />
-      <Projects />
+      <AboutSection />
+      <InterestsSection />
       <BlogSection />
       <Footer />
     </div>
