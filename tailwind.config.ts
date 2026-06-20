@@ -67,8 +67,14 @@ const config: Config = {
         full: "0",
       },
       fontFamily: {
-        sans: ["IBM Plex Mono", "ui-monospace", "SFMono-Regular", "monospace"],
-        mono: ["IBM Plex Mono", "ui-monospace", "SFMono-Regular", "monospace"],
+        sans: ["var(--font-sans)", "ui-sans-serif", "system-ui", "sans-serif"],
+        mono: [
+          "var(--font-mono)",
+          "IBM Plex Mono",
+          "ui-monospace",
+          "SFMono-Regular",
+          "monospace",
+        ],
       },
     },
   },
