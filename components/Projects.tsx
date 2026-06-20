@@ -1,5 +1,4 @@
 import { ExternalLink, Github } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
 
 interface Project {
   title: string;
@@ -63,101 +62,73 @@ const projects: Project[] = [
 
 export function Projects() {
   return (
-    <section className="space-y-10">
-      <div className="flex items-center gap-3">
-        <span className="font-mono text-accent">➜</span>
-        <h2 className="text-2xl font-bold tracking-tight">PROJECTS</h2>
+    <section className="space-y-6">
+      <div className="space-y-2">
+        <p className="section-tag">~/projects</p>
+        <h1 className="text-2xl sm:text-3xl font-semibold tracking-tight">
+          Projects
+        </h1>
       </div>
 
-      <div className="space-y-4">
-        {projects.map((project, index) => (
-          <div
-            key={project.title}
-            className="terminal-frame group hover:border-primary/50
-              transition-all duration-300 animate-slide-up"
-            style={{ animationDelay: `${index * 75}ms` }}
-          >
-            <div className="p-5 md:p-6">
-              {/* Header */}
-              <div
-                className="flex flex-col sm:flex-row sm:items-start
-                  justify-between gap-4 mb-4"
-              >
-                <div className="flex-1">
-                  <div className="flex items-center gap-3 mb-2">
-                    <span className="font-mono text-muted-foreground text-sm">
-                      {index + 1}.
-                    </span>
-                    <h3
-                      className="text-lg font-semibold group-hover:text-primary
-                        transition-colors"
-                    >
-                      {project.title}
-                    </h3>
-                    <Badge
-                      variant="outline"
-                      className="text-xs font-mono border-border"
-                    >
-                      {project.status.toUpperCase()}
-                    </Badge>
-                  </div>
-                  <div
-                    className="flex items-center gap-2 text-sm
-                      text-muted-foreground font-mono"
-                  >
-                    <span>{project.date}</span>
-                  </div>
-                </div>
-
-                {/* Links */}
-                <div className="flex items-center gap-1">
-                  {project.link && (
-                    <a
-                      href={project.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-2 border border-border hover:border-primary
-                        hover:text-primary transition-all"
-                      title="View live demo"
-                    >
-                      <ExternalLink className="h-4 w-4" />
-                    </a>
-                  )}
-                  {project.github && (
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-2 border border-border hover:border-primary
-                        hover:text-primary transition-all"
-                      title="View source"
-                    >
-                      <Github className="h-4 w-4" />
-                    </a>
-                  )}
-                </div>
+      <div className="divide-y divide-border border-y border-border">
+        {projects.map((project) => (
+          <article key={project.title} className="py-5 space-y-3">
+            <div className="flex items-start justify-between gap-4">
+              <div className="space-y-1">
+                <h3 className="font-medium">{project.title}</h3>
+                <p className="text-sm text-muted-foreground">
+                  {project.date}
+                  <span className="mx-2 text-border">·</span>
+                  {project.status}
+                </p>
               </div>
 
-              {/* Description */}
-              <p className="text-muted-foreground text-sm leading-relaxed mb-4">
-                {project.description}
-              </p>
-
-              {/* Technologies */}
-              <div className="flex flex-wrap gap-2">
-                {project.technologies.map((tech) => (
-                  <span
-                    key={tech}
-                    className="px-2 py-1 border border-border text-xs font-mono
-                      hover:border-primary/50 hover:text-primary
+              <div className="flex items-center gap-3 shrink-0 pt-1">
+                {project.link && (
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-muted-foreground hover:text-primary
                       transition-colors"
+                    title="View live demo"
+                    aria-label={`${project.title} live demo`}
                   >
-                    {tech}
-                  </span>
-                ))}
+                    <ExternalLink className="h-4 w-4" />
+                  </a>
+                )}
+                {project.github && (
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-muted-foreground hover:text-primary
+                      transition-colors"
+                    title="View source"
+                    aria-label={`${project.title} source`}
+                  >
+                    <Github className="h-4 w-4" />
+                  </a>
+                )}
               </div>
             </div>
-          </div>
+
+            <p className="text-sm leading-relaxed text-foreground/90">
+              {project.description}
+            </p>
+
+            <div className="flex flex-wrap gap-2">
+              {project.technologies.map((tech) => (
+                <span
+                  key={tech}
+                  className="border border-border px-2 py-0.5 text-xs
+                    text-muted-foreground"
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
+          </article>
         ))}
       </div>
     </section>

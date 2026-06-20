@@ -1,41 +1,32 @@
-import { TerminalFrame } from "@/components/TerminalFrame";
-
 const interests = [
-  "ART",
-  "MUSIC",
-  "MATHEMATICS",
-  "NATURE",
-  "HIKING",
-  "BLOCKCHAIN",
-  "TRAVEL",
-  "TECHNOLOGY",
+  "art",
+  "music",
+  "mathematics",
+  "nature",
+  "hiking",
+  "blockchain",
+  "travel",
+  "technology",
 ];
 
 export function InterestsSection() {
   return (
-    <section className="space-y-6">
-      <div className="flex items-center gap-3">
-        <span className="font-mono text-accent">➜</span>
-        <h2 className="text-2xl font-bold tracking-tight">INTERESTS</h2>
+    <section className="space-y-4">
+      <h2 className="text-sm font-medium tracking-tight text-muted-foreground">
+        # interests
+      </h2>
+      <div className="flex flex-wrap gap-2">
+        {interests.map((interest) => (
+          <span
+            key={interest}
+            className="border border-border px-2.5 py-1 text-sm
+              text-muted-foreground hover:border-primary hover:text-primary
+              transition-colors"
+          >
+            {interest}
+          </span>
+        ))}
       </div>
-
-      <TerminalFrame>
-        <div className="p-6">
-          <div className="flex flex-wrap gap-2">
-            {interests.map((interest, index) => (
-              <span
-                key={interest}
-                className="px-3 py-1.5 border border-border font-mono text-sm
-                  hover:border-primary/50 hover:text-primary transition-all
-                  cursor-default animate-slide-up"
-                style={{ animationDelay: `${index * 50}ms` }}
-              >
-                {interest}
-              </span>
-            ))}
-          </div>
-        </div>
-      </TerminalFrame>
     </section>
   );
 }

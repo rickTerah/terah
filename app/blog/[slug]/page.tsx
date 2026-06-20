@@ -2,7 +2,6 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { getPostBySlug, getAllSlugs } from "@/lib/mdx";
 import { MDXRemote } from "next-mdx-remote/rsc";
-import { Badge } from "@/components/ui/badge";
 import { codeToHtml } from "shiki";
 
 interface BlogPostProps {
@@ -26,7 +25,7 @@ async function CodeBlock({
 
   return (
     <div
-      className="relative rounded-lg overflow-hidden mb-6"
+      className="relative overflow-hidden mb-6 border border-border"
       dangerouslySetInnerHTML={{ __html: html }}
     />
   );
@@ -56,7 +55,7 @@ const components = {
   ),
   blockquote: (props: React.HTMLAttributes<HTMLQuoteElement>) => (
     <blockquote
-      className="border-l-4 border-primary pl-4 py-2 my-4 italic"
+      className="border-l-2 border-border pl-4 py-1 my-4 text-muted-foreground"
       {...props}
     />
   ),
@@ -70,8 +69,8 @@ const components = {
     if (isInline) {
       return (
         <code
-          className="bg-muted px-1.5 py-0.5 rounded text-sm font-mono
-            text-primary"
+          className="bg-muted px-1.5 py-0.5 text-sm font-mono text-primary
+            border border-border/60"
           {...props}
         >
           {children}
@@ -120,13 +119,21 @@ export default async function BlogPost({ params }: BlogPostProps) {
   }
 
   return (
-    <article className="max-w-4xl mx-auto px-4 py-8">
-      <header className="mb-8">
-        <h1 className="text-4xl font-bold mb-4">{post.title}</h1>
+    <article className="py-2">
+      <Link
+        href="/blog"
+        className="text-sm text-muted-foreground hover:text-primary
+          transition-colors"
+      >
+        ← writing
+      </Link>
 
-        <div
-          className="flex items-center gap-4 text-sm text-muted-foreground mb-6"
-        >
+      <header className="mt-6 mb-8">
+        <h1 className="text-2xl sm:text-3xl font-semibold tracking-tight mb-3">
+          {post.title}
+        </h1>
+
+        <div className="flex items-center gap-3 text-sm text-muted-foreground">
           <time dateTime={post.date}>
             {new Date(post.date).toLocaleDateString("en-US", {
               year: "numeric",
@@ -134,18 +141,19 @@ export default async function BlogPost({ params }: BlogPostProps) {
               day: "numeric",
             })}
           </time>
-          <span>•</span>
-          <Badge variant="outline" className="font-mono">
-            {post.category}
-          </Badge>
+          <span className="text-border">·</span>
+          <span>{post.category}</span>
+          <span className="text-border">·</span>
+          <span>{post.readTime}</span>
         </div>
 
         {post.tags.length > 0 && (
-          <div className="flex flex-wrap gap-2 mb-8">
+          <div className="flex flex-wrap gap-2 mt-4">
             {post.tags.map((tag) => (
               <span
                 key={tag}
-                className="text-xs px-2 py-1 bg-primary/10 text-primary rounded"
+                className="text-xs px-2 py-0.5 border border-border
+                  text-muted-foreground"
               >
                 #{tag}
               </span>
@@ -154,7 +162,7 @@ export default async function BlogPost({ params }: BlogPostProps) {
         )}
       </header>
 
-      <div className="prose max-w-none">
+      <div className="max-w-none">
         <p className="text-lg mb-8 leading-relaxed">{post.description}</p>
         <MDXRemote source={post.content} components={components} />
       </div>
@@ -169,8 +177,12 @@ export default async function BlogPost({ params }: BlogPostProps) {
           </div>
 
           <div className="flex gap-4">
-            <Link href="/blog" className="text-sm text-primary hover:underline">
-              ← Back to Blog
+            <Link
+              href="/blog"
+              className="text-sm text-muted-foreground hover:text-primary
+                transition-colors"
+            >
+              ← Back to writing
             </Link>
           </div>
         </div>

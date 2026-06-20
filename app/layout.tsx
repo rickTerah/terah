@@ -38,23 +38,14 @@ export const metadata: Metadata = {
       "Senior Software Engineer and Head of Engineering with 6+ years experience building scalable applications and leading development teams.",
     url: "https://terah.dev",
     siteName: "Patrick Mwangi",
-    images: [
-      {
-        url: "/img/laptop.png",
-        width: 1200,
-        height: 630,
-        alt: "Patrick Mwangi - Senior Software Engineer",
-      },
-    ],
     locale: "en_US",
     type: "website",
   },
   twitter: {
-    card: "summary_large_image",
+    card: "summary",
     title: "Patrick Mwangi - Senior Software Engineer",
     description:
       "Senior Software Engineer and Head of Engineering with 6+ years experience building scalable applications.",
-    images: ["/img/laptop.png"],
   },
   robots: {
     index: true,
@@ -80,10 +71,7 @@ export default function RootLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
       <body className="min-h-screen bg-background antialiased">
-        <Providers attribute="class" defaultTheme="dark" enableSystem>
-          <div className="fixed inset-0 bg-grid opacity-30 pointer-events-none" />
-          <div className="fixed inset-0 bg-gradient-radial pointer-events-none" />
-
+        <Providers attribute="class" defaultTheme="light" enableSystem>
           <a
             href="#main-content"
             className="sr-only focus:not-sr-only focus:absolute focus:top-4
@@ -95,8 +83,8 @@ export default function RootLayout({
 
           <main
             id="main-content"
-            className="relative flex flex-col mx-auto max-w-5xl w-full
-              min-h-screen px-6 md:px-8 lg:px-12 py-6"
+            className="relative flex flex-col mx-auto max-w-3xl w-full
+              min-h-screen px-5 sm:px-6 py-6"
             role="main"
           >
             <header>

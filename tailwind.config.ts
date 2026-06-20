@@ -1,5 +1,8 @@
-/** @type {import('tailwindcss').Config} */
-module.exports = {
+import tailwindcssAnimate from "tailwindcss-animate";
+
+import type { Config } from "tailwindcss";
+
+const config: Config = {
   darkMode: ["class"],
   content: [
     "./pages/**/*.{ts,tsx}",
@@ -51,54 +54,25 @@ module.exports = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        chart: {
-          "1": "hsl(var(--chart-1))",
-          "2": "hsl(var(--chart-2))",
-          "3": "hsl(var(--chart-3))",
-          "4": "hsl(var(--chart-4))",
-          "5": "hsl(var(--chart-5))",
-        },
-        gruvbox: {
-          "light-fg": "#3c3836",
-          "light-accent": "#fe8019",
-          "light-bg": "#fbf1c7",
-          "light-border": "#d5c4a1",
-          "dark-fg": "#ebdbb2",
-          "dark-accent": "#fe8019",
-          "dark-bg": "#282828",
-          "dark-border": "#665c54",
-        },
       },
       borderRadius: {
-        lg: "0",
-        md: "0",
+        none: "0",
         sm: "0",
-        xs: "0",
+        DEFAULT: "0",
+        md: "0",
+        lg: "0",
+        xl: "0",
+        "2xl": "0",
+        "3xl": "0",
+        full: "0",
       },
       fontFamily: {
-        sans: ["Figtree", "system-ui", "sans-serif"],
-        mono: ["IBM Plex Mono", "monospace"],
-      },
-      keyframes: {
-        "accordion-down": {
-          from: { height: 0 },
-          to: { height: "var(--radix-accordion-content-height)" },
-        },
-        "accordion-up": {
-          from: { height: "var(--radix-accordion-content-height)" },
-          to: { height: 0 },
-        },
-        blink: {
-          "0%, 100%": { opacity: 1 },
-          "50%": { opacity: 0 },
-        },
-      },
-      animation: {
-        "accordion-down": "accordion-down 0.2s ease-out",
-        "accordion-up": "accordion-up 0.2s ease-out",
-        blink: "blink 1s step-end infinite",
+        sans: ["IBM Plex Mono", "ui-monospace", "SFMono-Regular", "monospace"],
+        mono: ["IBM Plex Mono", "ui-monospace", "SFMono-Regular", "monospace"],
       },
     },
   },
-  plugins: [import("tailwindcss-animate")],
+  plugins: [tailwindcssAnimate],
 };
+
+export default config;

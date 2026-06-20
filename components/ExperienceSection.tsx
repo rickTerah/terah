@@ -1,5 +1,3 @@
-import { Badge } from "@/components/ui/badge";
-
 const timeline = [
   {
     year: "2025",
@@ -64,46 +62,38 @@ const timeline = [
 
 export function ExperienceSection() {
   return (
-    <section className="space-y-8">
-      <div className="flex items-center gap-3">
-        <span className="font-mono text-accent">➜</span>
-        <h2 className="text-2xl font-bold tracking-tight">EXPERIENCE</h2>
+    <section className="space-y-6">
+      <div className="space-y-2">
+        <p className="section-tag">~/experience</p>
+        <h1 className="text-2xl sm:text-3xl font-semibold tracking-tight">
+          Experience
+        </h1>
       </div>
 
-      <div className="space-y-0">
-        {timeline.map((item, index) => (
+      <div className="border-l border-border">
+        {timeline.map((item) => (
           <div
-            key={item.year}
-            className="group relative pl-8 py-4 border-l border-border
-              hover:border-primary/50 transition-colors animate-slide-up"
-            style={{ animationDelay: `${index * 50}ms` }}
+            key={`${item.year}-${item.title}`}
+            className="group relative pl-6 py-4"
           >
-            <div
-              className="absolute left-0 top-1/2 -translate-y-1/2
-                -translate-x-1/2 w-2 h-2 bg-background border border-border
-                group-hover:border-primary group-hover:bg-primary
-                transition-colors"
+            <span
+              className="absolute left-0 top-[1.4rem] -translate-x-1/2 h-2 w-2
+                bg-background border border-border group-hover:border-primary
+                group-hover:bg-primary transition-colors"
+              aria-hidden="true"
             />
-
-            <div
-              className="flex flex-col sm:flex-row sm:items-start gap-2
-                sm:gap-6"
-            >
-              <Badge
-                variant="outline"
-                className="w-16 justify-center font-mono text-xs border-border
-                  group-hover:border-primary/50"
+            <div className="flex flex-col sm:flex-row sm:gap-6">
+              <span
+                className="shrink-0 w-16 text-sm text-muted-foreground
+                  tabular-nums"
               >
                 {item.year}
-              </Badge>
+              </span>
               <div className="flex-1">
-                <h3
-                  className="font-semibold text-foreground
-                    group-hover:text-primary transition-colors"
-                >
+                <h3 className="font-medium">
                   {item.title}
                   <span className="text-muted-foreground"> @ </span>
-                  <span className="text-accent">{item.company}</span>
+                  <span className="text-primary">{item.company}</span>
                 </h3>
                 <p className="text-muted-foreground text-sm mt-1">
                   {item.description}
