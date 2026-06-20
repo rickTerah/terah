@@ -1,45 +1,39 @@
-import { Button } from "@/components/ui/button";
-import { TerminalFrame } from "@/components/TerminalFrame";
 import { Download, FileText } from "lucide-react";
 
 export function AboutSection() {
   return (
-    <section className="space-y-8">
-      <TerminalFrame title="about.md">
-        <div className="p-6 md:p-8">
-          <div className="space-y-4">
-            <div className="flex items-center gap-2 font-mono text-sm">
-              <span className="section-tag">ABOUT</span>
-            </div>
-            <p
-              className="text-lg text-muted-foreground leading-relaxed
-                max-w-3xl"
-            >
-              I&apos;m a software engineer with over six years of experience,
-              passionate about building impactful digital solutions. I enjoy
-              tackling complex challenges, especially rooted in real-world
-              problem-solving. From ideation to deployment, I&apos;ve developed
-              applications used across the country, helping shape how people
-              live, work, and connect.
-            </p>
-
-            <div className="flex flex-wrap gap-3 pt-4">
-              <Button asChild size="sm" className="font-mono">
-                <a href="/resume.pdf" download="patrick-mwangi-resume.pdf">
-                  <Download className="mr-2 h-3 w-3" />
-                  RESUME.PDF
-                </a>
-              </Button>
-              <Button asChild size="sm" variant="outline" className="font-mono">
-                <a href="/resume.docx" download="patrick-mwangi-resume.docx">
-                  <FileText className="mr-2 h-3 w-3" />
-                  RESUME.DOCX
-                </a>
-              </Button>
-            </div>
-          </div>
-        </div>
-      </TerminalFrame>
+    <section className="space-y-4">
+      <h2 className="text-sm font-medium tracking-tight text-muted-foreground">
+        # about
+      </h2>
+      <p className="leading-relaxed text-foreground/90">
+        I enjoy tackling complex challenges rooted in real-world
+        problem-solving. My work spans cloud architecture, system design, and
+        engineering leadership &mdash; mentoring teams and shipping reliable
+        software at scale.
+      </p>
+      <div className="flex flex-wrap gap-3 pt-1">
+        <a
+          href="/resume.pdf"
+          download="patrick-mwangi-resume.pdf"
+          className="inline-flex items-center gap-2 border border-border px-3
+            py-1.5 text-sm hover:border-primary hover:text-primary
+            transition-colors"
+        >
+          <Download className="h-3.5 w-3.5" />
+          resume.pdf
+        </a>
+        <a
+          href="/resume.docx"
+          download="patrick-mwangi-resume.docx"
+          className="inline-flex items-center gap-2 border border-border px-3
+            py-1.5 text-sm hover:border-primary hover:text-primary
+            transition-colors"
+        >
+          <FileText className="h-3.5 w-3.5" />
+          resume.docx
+        </a>
+      </div>
     </section>
   );
 }

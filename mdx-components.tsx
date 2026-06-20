@@ -123,7 +123,7 @@ const components = {
   ),
   blockquote: (props: BlockquoteProps) => (
     <blockquote
-      className="ml-[0.075em] border-l-3 border-gray-300 pl-4 text-gray-700
+      className="ml-[0.075em] border-l-2 border-gray-300 pl-4 text-gray-700
         dark:border-zinc-600 dark:text-zinc-300"
       {...props}
     />

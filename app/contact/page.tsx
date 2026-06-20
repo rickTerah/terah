@@ -65,105 +65,77 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="space-y-16 pb-16">
-      {/* Header */}
-      <TerminalFrame title="contact.sh" animate>
-        <div className="p-6 md:p-8">
-          <div className="space-y-4">
-            <div className="flex items-center gap-2 font-mono text-sm">
-              <span className="section-tag">CONTACT</span>
-            </div>
-            <h1 className="text-3xl md:text-4xl font-bold tracking-tight">
-              GET IN TOUCH
-            </h1>
-            <p className="text-muted-foreground max-w-2xl">
-              I&apos;M ALWAYS INTERESTED IN HEARING ABOUT NEW OPPORTUNITIES,
-              COLLABORATIONS, OR JUST HAVING A CHAT ABOUT TECHNOLOGY.
-            </p>
-          </div>
-        </div>
-      </TerminalFrame>
+    <div className="space-y-10 pb-16">
+      <div className="space-y-2">
+        <p className="section-tag">~/contact</p>
+        <h1 className="text-2xl sm:text-3xl font-semibold tracking-tight">
+          Get in touch
+        </h1>
+        <p className="text-muted-foreground max-w-2xl">
+          I&apos;m always interested in hearing about new opportunities,
+          collaborations, or just having a chat about technology.
+        </p>
+      </div>
 
       <div className="grid lg:grid-cols-5 gap-8">
         {/* Contact Info */}
-        <div className="lg:col-span-2 space-y-4">
-          {/* Info Card */}
-          <div className="terminal-frame">
-            <div className="p-5 space-y-5">
-              <div className="flex items-center gap-3">
-                <div className="p-2 border border-border">
-                  <Mail className="h-4 w-4" />
-                </div>
-                <div>
-                  <p className="font-mono text-xs text-muted-foreground mb-0.5">
-                    EMAIL
-                  </p>
-                  <a
-                    href="mailto:patrickmwangi554@gmail.com"
-                    className="hover:text-primary transition-colors font-mono
-                      text-sm"
-                  >
-                    patrickmwangi554@gmail.com
-                  </a>
-                </div>
+        <div className="lg:col-span-2 space-y-6">
+          <div className="space-y-4">
+            <div className="flex items-center gap-3">
+              <Mail className="h-4 w-4 text-muted-foreground" />
+              <div>
+                <p className="text-xs text-muted-foreground mb-0.5">email</p>
+                <a
+                  href="mailto:patrickmwangi554@gmail.com"
+                  className="text-sm hover:text-primary transition-colors"
+                >
+                  patrickmwangi554@gmail.com
+                </a>
               </div>
+            </div>
 
-              <div className="flex items-center gap-3">
-                <div className="p-2 border border-border">
-                  <MapPin className="h-4 w-4" />
-                </div>
-                <div>
-                  <p className="font-mono text-xs text-muted-foreground mb-0.5">
-                    LOCATION
-                  </p>
-                  <p className="font-mono text-sm">NAIROBI, KENYA</p>
-                </div>
+            <div className="flex items-center gap-3">
+              <MapPin className="h-4 w-4 text-muted-foreground" />
+              <div>
+                <p className="text-xs text-muted-foreground mb-0.5">location</p>
+                <p className="text-sm">Nairobi, Kenya</p>
               </div>
             </div>
           </div>
 
-          {/* Social Links */}
-          <div className="terminal-frame">
-            <div className="p-3 space-y-1">
-              <a
-                href="https://www.linkedin.com/in/mwangipatrickn/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-3 p-3 border border-transparent
-                  hover:border-border transition-all group"
+          <div className="flex flex-col gap-1 border-t border-border pt-4">
+            <a
+              href="https://www.linkedin.com/in/mwangipatrickn/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-center gap-3 py-1.5 text-sm
+                text-muted-foreground hover:text-primary transition-colors"
+            >
+              <Linkedin className="h-4 w-4" />
+              LinkedIn
+              <span
+                className="ml-auto opacity-0 group-hover:opacity-100
+                  transition-opacity"
               >
-                <Linkedin
-                  className="h-4 w-4 text-muted-foreground
-                    group-hover:text-primary transition-colors"
-                />
-                <span className="font-mono text-sm">LINKEDIN</span>
-                <span
-                  className="ml-auto text-primary opacity-0
-                    group-hover:opacity-100 transition-opacity"
-                >
-                  ↗
-                </span>
-              </a>
-              <a
-                href="https://github.com/rickTerah"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-3 p-3 border border-transparent
-                  hover:border-border transition-all group"
+                ↗
+              </span>
+            </a>
+            <a
+              href="https://github.com/rickTerah"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-center gap-3 py-1.5 text-sm
+                text-muted-foreground hover:text-primary transition-colors"
+            >
+              <Github className="h-4 w-4" />
+              GitHub
+              <span
+                className="ml-auto opacity-0 group-hover:opacity-100
+                  transition-opacity"
               >
-                <Github
-                  className="h-4 w-4 text-muted-foreground
-                    group-hover:text-primary transition-colors"
-                />
-                <span className="font-mono text-sm">GITHUB</span>
-                <span
-                  className="ml-auto text-primary opacity-0
-                    group-hover:opacity-100 transition-opacity"
-                >
-                  ↗
-                </span>
-              </a>
-            </div>
+                ↗
+              </span>
+            </a>
           </div>
         </div>
 
@@ -174,8 +146,8 @@ export default function ContactPage() {
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <Label htmlFor="name" className="font-mono text-xs">
-                      NAME
+                    <Label htmlFor="name" className="text-xs">
+                      name
                     </Label>
                     <Input
                       type="text"
@@ -184,13 +156,13 @@ export default function ContactPage() {
                       required
                       value={formData.name}
                       onChange={handleChange}
-                      placeholder="YOUR NAME"
-                      className="font-mono text-sm"
+                      placeholder="Your name"
+                      className="text-sm"
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="email" className="font-mono text-xs">
-                      EMAIL
+                    <Label htmlFor="email" className="text-xs">
+                      email
                     </Label>
                     <Input
                       type="email"
@@ -199,15 +171,15 @@ export default function ContactPage() {
                       required
                       value={formData.email}
                       onChange={handleChange}
-                      placeholder="YOUR@EMAIL.COM"
-                      className="font-mono text-sm"
+                      placeholder="you@email.com"
+                      className="text-sm"
                     />
                   </div>
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="subject" className="font-mono text-xs">
-                    SUBJECT
+                  <Label htmlFor="subject" className="text-xs">
+                    subject
                   </Label>
                   <Input
                     type="text"
@@ -216,14 +188,14 @@ export default function ContactPage() {
                     required
                     value={formData.subject}
                     onChange={handleChange}
-                    placeholder="WHAT'S THIS ABOUT?"
-                    className="font-mono text-sm"
+                    placeholder="What's this about?"
+                    className="text-sm"
                   />
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="message" className="font-mono text-xs">
-                    MESSAGE
+                  <Label htmlFor="message" className="text-xs">
+                    message
                   </Label>
                   <Textarea
                     id="message"
@@ -232,44 +204,43 @@ export default function ContactPage() {
                     rows={5}
                     value={formData.message}
                     onChange={handleChange}
-                    placeholder="YOUR MESSAGE..."
-                    className="font-mono text-sm"
+                    placeholder="Your message..."
+                    className="text-sm"
                   />
                 </div>
 
                 {submitStatus === "success" && (
                   <div
                     className="flex items-center gap-2 p-3 border
-                      border-primary/50 bg-primary/5 font-mono text-sm
-                      text-primary"
+                      border-primary/50 bg-primary/5 text-sm text-primary"
                   >
                     <CheckCircle className="h-4 w-4" />
-                    MESSAGE SENT SUCCESSFULLY
+                    Message sent successfully
                   </div>
                 )}
 
                 {submitStatus === "error" && (
                   <div
                     className="flex items-center gap-2 p-3 border
-                      border-destructive/50 bg-destructive/5 font-mono text-sm
+                      border-destructive/50 bg-destructive/5 text-sm
                       text-destructive"
                   >
                     <XCircle className="h-4 w-4" />
-                    FAILED TO SEND MESSAGE
+                    Failed to send message
                   </div>
                 )}
 
                 <Button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full font-mono"
+                  className="w-full"
                 >
                   {isSubmitting ? (
-                    "SENDING..."
+                    "Sending..."
                   ) : (
                     <>
                       <Send className="mr-2 h-3 w-3" />
-                      SEND MESSAGE
+                      Send message
                     </>
                   )}
                 </Button>

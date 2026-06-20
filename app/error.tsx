@@ -15,44 +15,24 @@ export default function Error({
     <div className="min-h-screen flex items-center justify-center px-4">
       <div className="text-center">
         <div className="mb-8">
-          <h1
-            className="text-9xl font-bold text-gruvbox-light-fg
-              dark:text-gruvbox-dark-fg opacity-20"
-          >
-            500
-          </h1>
+          <h1 className="text-8xl font-semibold text-foreground/15">500</h1>
         </div>
 
         <div className="mb-8">
-          <h2
-            className="text-2xl font-semibold text-gruvbox-light-fg
-              dark:text-gruvbox-dark-fg mb-4"
-          >
-            Something went wrong
-          </h2>
-          <p
-            className="text-gruvbox-light-fg/70 dark:text-gruvbox-dark-fg/70
-              max-w-md mx-auto mb-4"
-          >
+          <h2 className="text-2xl font-semibold mb-4">Something went wrong</h2>
+          <p className="text-muted-foreground max-w-md mx-auto mb-4">
             I apologize, but something unexpected happened. The error has been
             logged and I'll look into it.
           </p>
 
           {process.env.NODE_ENV === "development" && (
             <details
-              className="mt-4 p-4 bg-gruvbox-light-bg/50
-                dark:bg-gruvbox-dark-bg/50 rounded-lg text-left"
+              className="mt-4 p-4 border border-border bg-muted text-left"
             >
-              <summary
-                className="cursor-pointer text-sm font-mono
-                  text-gruvbox-light-fg/70 dark:text-gruvbox-dark-fg/70"
-              >
+              <summary className="cursor-pointer text-sm text-muted-foreground">
                 Error details
               </summary>
-              <pre
-                className="mt-2 text-xs text-red-600 dark:text-red-400
-                  overflow-auto"
-              >
+              <pre className="mt-2 text-xs text-destructive overflow-auto">
                 {error.message}
                 {error.stack}
               </pre>
@@ -75,16 +55,9 @@ export default function Error({
         </div>
 
         <div className="mt-12">
-          <p
-            className="text-sm text-gruvbox-light-fg/50
-              dark:text-gruvbox-dark-fg/50"
-          >
+          <p className="text-sm text-muted-foreground">
             If the problem persists, please
-            <Link
-              href="/contact"
-              className="text-gruvbox-light-accent dark:text-gruvbox-dark-accent
-                hover:underline ml-1"
-            >
+            <Link href="/contact" className="text-primary hover:underline ml-1">
               contact me
             </Link>
             .

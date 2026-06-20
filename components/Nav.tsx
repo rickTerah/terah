@@ -6,11 +6,10 @@ import { ThemeToggle } from "@/components/ThemeToggle";
 import { cn } from "@/lib/utils";
 
 const navItems = [
-  { href: "/", label: "~", title: "Home" },
-  { href: "/experience", label: "~/experience", title: "Experience" },
-  { href: "/projects", label: "~/projects", title: "Projects" },
-  { href: "/blog", label: "~/blog", title: "Blog" },
-  { href: "/contact", label: "~/contact", title: "Contact" },
+  { href: "/experience", label: "Experience", title: "Experience" },
+  { href: "/projects", label: "Projects", title: "Projects" },
+  { href: "/blog", label: "Writing", title: "Writing" },
+  { href: "/contact", label: "Contact", title: "Contact" },
 ];
 
 export function Nav() {
@@ -18,48 +17,43 @@ export function Nav() {
 
   return (
     <nav
-      className="flex items-center justify-between py-4 mb-10"
+      className="flex items-center justify-between gap-4 py-2 mb-12 border-b
+        border-border"
       role="navigation"
       aria-label="Main navigation"
     >
-      <div className="flex items-center gap-4">
-        <Link
-          href="/"
-          className="group flex items-center gap-2 hover:text-primary
-            transition-colors"
-        >
-          <span
-            className="font-mono text-sm text-muted-foreground
-              group-hover:text-primary transition-colors"
-          >
-            <span className="text-accent">➜</span> ~/terah
-          </span>
-          <span className="text-primary animate-cursor-blink">_</span>
-        </Link>
-      </div>
+      <Link
+        href="/"
+        className="font-mono text-sm font-medium text-foreground
+          hover:text-primary transition-colors"
+      >
+        Terah
+      </Link>
 
-      <div className="flex items-center gap-1">
-        <div className="hidden md:flex items-center">
-          {navItems.map((item) => (
+      <div className="flex items-center gap-1 sm:gap-2">
+        {navItems.map((item) => {
+          const active =
+            item.href === "/"
+              ? pathname === "/"
+              : pathname.startsWith(item.href);
+          return (
             <Link
               key={item.href}
               href={item.href}
               className={cn(
-                `px-3 py-1.5 text-sm font-mono transition-all duration-200
-                border border-transparent`,
-                pathname === item.href
-                  ? "text-primary border-primary/30 bg-primary/5"
-                  : `text-muted-foreground hover:text-foreground
-                    hover:border-border`,
+                "px-2 py-1 text-sm font-mono transition-colors",
+                active
+                  ? "text-primary"
+                  : "text-muted-foreground hover:text-foreground",
               )}
               title={item.title}
             >
               {item.label}
             </Link>
-          ))}
-        </div>
+          );
+        })}
 
-        <div className="w-px h-4 bg-border mx-2 hidden md:block" />
+        <span className="mx-1 h-4 w-px bg-border" aria-hidden="true" />
 
         <ThemeToggle />
       </div>

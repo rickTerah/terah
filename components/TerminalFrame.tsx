@@ -16,12 +16,14 @@ export function TerminalFrame({
       className={`terminal-frame ${animate ? "animate-fade-in" : ""}
         ${className}`}
     >
-      <div className="terminal-header">
-        <div className="terminal-dot terminal-dot-red" />
-        <div className="terminal-dot terminal-dot-yellow" />
-        <div className="terminal-dot terminal-dot-green" />
-        {title && <div className="terminal-title">{title}</div>}
-      </div>
+      {title && (
+        <div className="terminal-header">
+          <span className="text-muted-foreground" aria-hidden="true">
+            ◆
+          </span>
+          <span className="terminal-title">{title}</span>
+        </div>
+      )}
       {children}
     </div>
   );

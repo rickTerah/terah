@@ -6,87 +6,87 @@
 
 @layer base {
   :root {
-    --background: 220 15% 4%;
-    --foreground: 145 60% 70%;
-    --foreground-muted: 145 40% 55%;
-    --card: 220 15% 6%;
-    --card-foreground: 145 60% 70%;
-    --popover: 220 15% 6%;
-    --popover-foreground: 145 60% 70%;
-    --primary: 145 75% 55%;
-    --primary-foreground: 220 15% 4%;
-    --secondary: 220 12% 8%;
-    --secondary-foreground: 145 50% 60%;
-    --muted: 220 12% 10%;
-    --muted-foreground: 145 30% 50%;
-    --accent: 185 90% 60%;
-    --accent-foreground: 220 15% 4%;
-    --destructive: 0 75% 60%;
-    --destructive-foreground: 0 0% 100%;
-    --border: 220 12% 15%;
-    --input: 220 12% 12%;
-    --ring: 145 75% 55%;
+    /* Light theme (default) - warm paper, near-black ink */
+    --background: 40 33% 97%;
+    --foreground: 30 8% 14%;
+    --foreground-muted: 30 5% 40%;
+    --card: 40 33% 99%;
+    --card-foreground: 30 8% 14%;
+    --popover: 40 33% 99%;
+    --popover-foreground: 30 8% 14%;
+    --primary: 18 78% 46%;
+    --primary-foreground: 40 33% 97%;
+    --secondary: 40 14% 92%;
+    --secondary-foreground: 30 8% 14%;
+    --muted: 40 14% 93%;
+    --muted-foreground: 30 5% 42%;
+    --accent: 18 78% 46%;
+    --accent-foreground: 40 33% 97%;
+    --destructive: 0 65% 48%;
+    --destructive-foreground: 40 33% 97%;
+    --border: 35 12% 82%;
+    --input: 35 12% 82%;
+    --ring: 18 78% 46%;
     --radius: 0;
-    --chart-1: 145 75% 55%;
-    --chart-2: 185 90% 60%;
-    --chart-3: 270 70% 65%;
-    --chart-4: 45 95% 60%;
-    --chart-5: 0 0% 60%;
+    --chart-1: 18 78% 46%;
+    --chart-2: 200 50% 45%;
+    --chart-3: 270 40% 55%;
+    --chart-4: 45 70% 45%;
+    --chart-5: 0 0% 45%;
 
-    /* Code syntax highlighting - Dark theme */
-    --code-bg: 220 15% 5%;
-    --code-text: 145 50% 75%;
+    /* Code block */
+    --code-bg: 0 0% 9%;
+    --code-text: 40 10% 85%;
 
-    /* Sugar-high CSS variables for dark theme */
-    --sh-keyword: hsl(280, 70%, 70%);
-    --sh-string: hsl(145, 60%, 65%);
-    --sh-class: hsl(45, 80%, 65%);
-    --sh-identifier: hsl(200, 70%, 70%);
-    --sh-sign: hsl(220, 15%, 65%);
-    --sh-property: hsl(200, 70%, 70%);
-    --sh-entity: hsl(185, 70%, 65%);
-    --sh-jsxliterals: hsl(340, 70%, 70%);
-    --sh-comment: hsl(220, 10%, 50%);
-    --sh-space: hsl(145, 50%, 75%);
+    /* Sugar-high syntax tokens */
+    --sh-keyword: hsl(18, 70%, 50%);
+    --sh-string: hsl(140, 40%, 38%);
+    --sh-class: hsl(40, 70%, 42%);
+    --sh-identifier: hsl(210, 45%, 45%);
+    --sh-sign: hsl(30, 5%, 50%);
+    --sh-property: hsl(210, 45%, 45%);
+    --sh-entity: hsl(190, 45%, 40%);
+    --sh-jsxliterals: hsl(280, 35%, 50%);
+    --sh-comment: hsl(30, 5%, 55%);
+    --sh-space: hsl(30, 8%, 30%);
   }
 
-  .light {
-    --background: 220 20% 98%;
-    --foreground: 220 15% 15%;
-    --foreground-muted: 220 10% 40%;
-    --card: 0 0% 100%;
-    --card-foreground: 220 15% 15%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 220 15% 15%;
-    --primary: 145 70% 40%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 220 15% 94%;
-    --secondary-foreground: 220 15% 15%;
-    --muted: 220 15% 94%;
-    --muted-foreground: 220 10% 45%;
-    --accent: 185 80% 45%;
-    --accent-foreground: 0 0% 100%;
-    --destructive: 0 75% 60%;
-    --destructive-foreground: 0 0% 100%;
-    --border: 220 12% 85%;
-    --input: 220 12% 85%;
-    --ring: 145 70% 40%;
+  .dark {
+    /* Dark theme - clean charcoal, soft warm grey */
+    --background: 0 0% 9%;
+    --foreground: 40 10% 86%;
+    --foreground-muted: 40 5% 58%;
+    --card: 0 0% 11%;
+    --card-foreground: 40 10% 86%;
+    --popover: 0 0% 11%;
+    --popover-foreground: 40 10% 86%;
+    --primary: 22 85% 58%;
+    --primary-foreground: 0 0% 9%;
+    --secondary: 0 0% 14%;
+    --secondary-foreground: 40 10% 86%;
+    --muted: 0 0% 14%;
+    --muted-foreground: 40 5% 58%;
+    --accent: 22 85% 58%;
+    --accent-foreground: 0 0% 9%;
+    --destructive: 0 70% 60%;
+    --destructive-foreground: 0 0% 9%;
+    --border: 0 0% 20%;
+    --input: 0 0% 18%;
+    --ring: 22 85% 58%;
 
-    /* Code syntax highlighting - Light theme */
-    --code-bg: 220 15% 12%;
-    --code-text: 220 10% 85%;
+    --code-bg: 0 0% 7%;
+    --code-text: 40 10% 82%;
 
-    /* Sugar-high CSS variables for light theme */
-    --sh-keyword: hsl(280, 70%, 65%);
-    --sh-string: hsl(145, 60%, 60%);
-    --sh-class: hsl(45, 80%, 65%);
-    --sh-identifier: hsl(200, 70%, 65%);
-    --sh-sign: hsl(220, 15%, 70%);
-    --sh-property: hsl(200, 70%, 65%);
-    --sh-entity: hsl(185, 70%, 65%);
-    --sh-jsxliterals: hsl(340, 70%, 65%);
-    --sh-comment: hsl(220, 10%, 60%);
-    --sh-space: hsl(220, 10%, 85%);
+    --sh-keyword: hsl(22, 80%, 62%);
+    --sh-string: hsl(140, 45%, 60%);
+    --sh-class: hsl(45, 70%, 62%);
+    --sh-identifier: hsl(205, 55%, 65%);
+    --sh-sign: hsl(40, 5%, 55%);
+    --sh-property: hsl(205, 55%, 65%);
+    --sh-entity: hsl(190, 55%, 60%);
+    --sh-jsxliterals: hsl(280, 50%, 70%);
+    --sh-comment: hsl(40, 5%, 50%);
+    --sh-space: hsl(40, 10%, 75%);
   }
 }
 
@@ -131,152 +131,10 @@
   }
 
   .animate-fade-in {
-    animation: fadeIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation: fadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
 
-  .animate-slide-up {
-    animation: slideUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  }
-
-  .animate-blink {
-    animation: blink 1s step-end infinite;
-  }
-
-  .animate-cursor-blink {
-    animation: cursorBlink 1.2s infinite;
-  }
-
-  .animation-delay-75 {
-    animation-delay: 75ms;
-  }
-  .animation-delay-150 {
-    animation-delay: 150ms;
-  }
-  .animation-delay-225 {
-    animation-delay: 225ms;
-  }
-  .animation-delay-300 {
-    animation-delay: 300ms;
-  }
-  .animation-delay-375 {
-    animation-delay: 375ms;
-  }
-  .animation-delay-450 {
-    animation-delay: 450ms;
-  }
-  .animation-delay-525 {
-    animation-delay: 525ms;
-  }
-  .animation-delay-600 {
-    animation-delay: 600ms;
-  }
-  .animation-delay-675 {
-    animation-delay: 675ms;
-  }
-  .animation-delay-750 {
-    animation-delay: 750ms;
-  }
-  .animation-delay-825 {
-    animation-delay: 825ms;
-  }
-  .animation-delay-900 {
-    animation-delay: 900ms;
-  }
-
-  .gradient-text {
-    background: linear-gradient(
-      135deg,
-      hsl(var(--primary)) 0%,
-      hsl(var(--accent)) 100%
-    );
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  .gradient-border {
-    position: relative;
-    background: hsl(var(--card));
-  }
-
-  .gradient-border::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    padding: 1px;
-    background: linear-gradient(
-      135deg,
-      hsl(var(--primary)),
-      hsl(var(--accent)) 50%,
-      hsl(var(--primary))
-    );
-    -webkit-mask:
-      linear-gradient(#fff 0 0) content-box,
-      linear-gradient(#fff 0 0);
-    mask:
-      linear-gradient(#fff 0 0) content-box,
-      linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    pointer-events: none;
-  }
-
-  .glow-primary {
-    box-shadow: 0 0 30px hsl(var(--primary) / 0.2);
-  }
-
-  .glow-accent {
-    box-shadow: 0 0 30px hsl(var(--accent) / 0.2);
-  }
-
-  .text-glow {
-    text-shadow: 0 0 20px hsl(var(--primary) / 0.4);
-  }
-
-  .text-glow-accent {
-    text-shadow: 0 0 20px hsl(var(--accent) / 0.4);
-  }
-
-  .hover-glow:hover {
-    box-shadow: 0 0 25px hsl(var(--primary) / 0.25);
-  }
-
-  .bg-grid {
-    background-image:
-      linear-gradient(hsl(var(--border) / 0.3) 1px, transparent 1px),
-      linear-gradient(90deg, hsl(var(--border) / 0.3) 1px, transparent 1px);
-    background-size: 40px 40px;
-  }
-
-  .bg-dots {
-    background-image: radial-gradient(
-      hsl(var(--border) / 0.5) 1px,
-      transparent 1px
-    );
-    background-size: 20px 20px;
-  }
-
-  .bg-gradient-radial {
-    background: radial-gradient(
-      ellipse 80% 50% at 50% -20%,
-      hsl(var(--primary) / 0.15),
-      transparent
-    );
-  }
-
-  .bg-noise {
-    position: relative;
-  }
-
-  .bg-noise::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-    opacity: 0.025;
-    pointer-events: none;
-  }
-
+  /* Flat bordered box (opentui-style) */
   .terminal-frame {
     position: relative;
     background: hsl(var(--card));
@@ -287,52 +145,20 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    padding: 12px 16px;
-    background: hsl(var(--muted));
+    padding: 8px 14px;
     border-bottom: 1px solid hsl(var(--border));
   }
 
-  .terminal-dot {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-  }
-
-  .terminal-dot-red {
-    background: #ff5f56;
-  }
-  .terminal-dot-yellow {
-    background: #ffbd2e;
-  }
-  .terminal-dot-green {
-    background: #27c93f;
-  }
-
   .terminal-title {
-    flex: 1;
-    text-align: center;
     font-family: "IBM Plex Mono", monospace;
     font-size: 12px;
     color: hsl(var(--muted-foreground));
   }
 
-  .cmd-prompt {
-    color: hsl(var(--primary));
-  }
-
-  .cmd-prompt::before {
-    content: "→";
-    margin-right: 8px;
-  }
-
-  .file-path {
-    color: hsl(var(--accent));
-    font-family: "IBM Plex Mono", monospace;
-  }
-
   .section-tag {
     font-family: "IBM Plex Mono", monospace;
     font-size: 12px;
+    letter-spacing: 0.02em;
     color: hsl(var(--muted-foreground));
   }
 
@@ -340,45 +166,13 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-width: 24px;
-    height: 24px;
+    min-width: 22px;
+    height: 22px;
     padding: 0 6px;
     font-family: "IBM Plex Mono", monospace;
     font-size: 11px;
     background: hsl(var(--muted));
     border: 1px solid hsl(var(--border));
-  }
-
-  .status-online {
-    position: relative;
-  }
-
-  .status-online::before {
-    content: "";
-    position: absolute;
-    width: 8px;
-    height: 8px;
-    background: hsl(var(--primary));
-    border-radius: 50%;
-    animation: pulse 2s infinite;
-  }
-
-  .marquee-container {
-    overflow: hidden;
-  }
-
-  .marquee {
-    display: flex;
-    animation: marquee 30s linear infinite;
-  }
-
-  .marquee-item {
-    flex-shrink: 0;
-    padding: 0 32px;
-    font-family: "IBM Plex Mono", monospace;
-    font-size: 14px;
-    color: hsl(var(--muted-foreground));
-    white-space: nowrap;
   }
 
   @keyframes fadeIn {
@@ -390,149 +184,12 @@
     }
   }
 
-  @keyframes slideUp {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  @keyframes blink {
-    0%,
-    100% {
-      opacity: 1;
-    }
-    50% {
-      opacity: 0;
-    }
-  }
-
-  @keyframes cursorBlink {
-    0%,
-    45% {
-      opacity: 1;
-    }
-    50%,
-    95% {
-      opacity: 0;
-    }
-  }
-
-  @keyframes pulse {
-    0%,
-    100% {
-      opacity: 1;
-      box-shadow: 0 0 0 0 hsl(var(--primary) / 0.4);
-    }
-    50% {
-      opacity: 0.8;
-      box-shadow: 0 0 0 4px hsl(var(--primary) / 0);
-    }
-  }
-
-  @keyframes marquee {
-    0% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(-50%);
-    }
-  }
-
   ::selection {
     background: hsl(var(--primary) / 0.3);
   }
 }
 
-/* Additional syntax highlighting for non-Shiki code blocks */
-pre code .token.comment,
-pre code .token.prolog,
-pre code .token.doctype,
-pre code .token.cdata {
-  color: hsl(var(--code-comment));
-  font-style: italic;
-}
-
-pre code .token.keyword,
-pre code .token.control,
-pre code .token.directive,
-pre code .token.unit {
-  color: hsl(var(--code-keyword));
-  font-weight: 500;
-}
-
-pre code .token.string,
-pre code .token.attr-value,
-pre code .token.char,
-pre code .token.builtin {
-  color: hsl(var(--code-string));
-}
-
-pre code .token.function,
-pre code .token.method {
-  color: hsl(var(--code-function));
-}
-
-pre code .token.number,
-pre code .token.boolean {
-  color: hsl(var(--code-number));
-}
-
-pre code .token.operator,
-pre code .token.entity,
-pre code .token.url {
-  color: hsl(var(--code-operator));
-}
-
-pre code .token.punctuation {
-  color: hsl(var(--code-punctuation));
-}
-
-pre code .token.class-name,
-pre code .token.type-name {
-  color: hsl(var(--code-class));
-}
-
-pre code .token.property,
-pre code .token.parameter {
-  color: hsl(var(--code-property));
-}
-
-pre code .token.tag {
-  color: hsl(var(--code-tag));
-}
-
-pre code .token.attr-name {
-  color: hsl(var(--code-attr-name));
-}
-
-pre code .token.variable,
-pre code .token.this {
-  color: hsl(var(--code-variable));
-}
-
-pre code .token.constant {
-  color: hsl(var(--code-constant));
-}
-
-pre code .token.regex,
-pre code .token.important {
-  color: hsl(var(--code-regex));
-  font-weight: 500;
-}
-
-pre code .token.deleted {
-  color: hsl(var(--destructive));
-}
-
-pre code .token.inserted {
-  color: hsl(var(--primary));
-}
-
+/* Code blocks (sugar-high on listing pages, Shiki in posts) */
 pre {
   background: hsl(var(--code-bg));
   color: hsl(var(--code-text));

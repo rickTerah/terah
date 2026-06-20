@@ -1,72 +1,43 @@
 import Link from "next/link";
-import { Badge } from "@/components/ui/badge";
 import { getAllPosts } from "@/lib/mdx";
 
 export function BlogSection() {
-  const posts = getAllPosts().slice(0, 2);
+  const posts = getAllPosts().slice(0, 3);
   return (
-    <section className="space-y-8">
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-3">
-          <span className="font-mono text-accent">➜</span>
-          <h2 className="text-2xl font-bold tracking-tight">LATEST POSTS</h2>
-        </div>
+    <section className="space-y-4">
+      <div className="flex items-baseline justify-between">
+        <h2 className="text-sm font-medium tracking-tight text-muted-foreground">
+          # writing
+        </h2>
         <Link
           href="/blog"
-          className="font-mono text-sm text-muted-foreground hover:text-primary
+          className="text-sm text-muted-foreground hover:text-primary
             transition-colors"
         >
-          VIEW ALL →
+          view all →
         </Link>
       </div>
 
-      <div className="grid gap-4">
-        {posts.map((post, index) => (
-          <Link
-            key={post.slug}
-            href={`/blog/${post.slug}`}
-            className="terminal-frame group hover:border-primary/50
-              transition-all duration-300 animate-slide-up block"
-            style={{ animationDelay: `${index * 75}ms` }}
-          >
-            <div className="p-5 md:p-6">
-              <div
-                className="flex items-center gap-3 text-sm text-muted-foreground
-                  mb-3 font-mono"
+      <ul className="divide-y divide-border border-y border-border">
+        {posts.map((post) => (
+          <li key={post.slug}>
+            <Link
+              href={`/blog/${post.slug}`}
+              className="group flex items-baseline gap-4 py-3 hover:text-primary
+                transition-colors"
+            >
+              <span
+                className="shrink-0 text-sm text-muted-foreground tabular-nums"
               >
-                <Badge
-                  variant="outline"
-                  className="text-xs font-mono border-border"
-                >
-                  {new Date(post.date).getFullYear()}
-                </Badge>
-                <span>/</span>
-                <span>{post.readTime}</span>
-              </div>
-
-              <h3
-                className="text-lg font-semibold mb-2 group-hover:text-primary
-                  transition-colors"
-              >
+                {new Date(post.date).getFullYear()}
+              </span>
+              <span className="flex-1 group-hover:underline underline-offset-4">
                 {post.title}
-              </h3>
-
-              <p className="text-muted-foreground text-sm leading-relaxed">
-                {post.description}
-              </p>
-
-              <div
-                className="mt-4 flex items-center gap-2 text-sm font-mono
-                  text-primary opacity-0 group-hover:opacity-100
-                  transition-opacity"
-              >
-                <span>READ</span>
-                <span>→</span>
-              </div>
-            </div>
-          </Link>
+              </span>
+            </Link>
+          </li>
         ))}
-      </div>
+      </ul>
     </section>
   );
 }
