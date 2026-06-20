@@ -33,16 +33,22 @@ async function CodeBlock({
 
 const components = {
   h1: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
-    <h1 className="text-3xl font-bold mt-8 mb-4" {...props} />
+    <h1
+      className="text-2xl font-semibold tracking-tight mt-10 mb-4"
+      {...props}
+    />
   ),
   h2: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
-    <h2 className="text-2xl font-semibold mt-8 mb-4" {...props} />
+    <h2 className="text-xl font-semibold tracking-tight mt-9 mb-3" {...props} />
   ),
   h3: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
-    <h3 className="text-xl font-semibold mt-6 mb-3" {...props} />
+    <h3
+      className="text-base font-semibold tracking-tight mt-7 mb-2"
+      {...props}
+    />
   ),
   p: (props: React.HTMLAttributes<HTMLParagraphElement>) => (
-    <p className="mb-4 leading-relaxed text-muted-foreground" {...props} />
+    <p className="mb-5 leading-relaxed text-foreground/90" {...props} />
   ),
   ul: (props: React.HTMLAttributes<HTMLUListElement>) => (
     <ul className="list-disc list-inside mb-4 space-y-2" {...props} />
@@ -51,7 +57,7 @@ const components = {
     <ol className="list-decimal list-inside mb-4 space-y-2" {...props} />
   ),
   li: (props: React.HTMLAttributes<HTMLLIElement>) => (
-    <li className="text-muted-foreground" {...props} />
+    <li className="text-foreground/90 leading-relaxed" {...props} />
   ),
   blockquote: (props: React.HTMLAttributes<HTMLQuoteElement>) => (
     <blockquote
@@ -162,8 +168,10 @@ export default async function BlogPost({ params }: BlogPostProps) {
         )}
       </header>
 
-      <div className="max-w-none">
-        <p className="text-lg mb-8 leading-relaxed">{post.description}</p>
+      <div className="prose-body max-w-[68ch]">
+        <p className="text-lg mb-8 leading-relaxed text-muted-foreground">
+          {post.description}
+        </p>
         <MDXRemote source={post.content} components={components} />
       </div>
 

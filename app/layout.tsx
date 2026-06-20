@@ -1,8 +1,22 @@
 import type React from "react";
 import "./globals.css";
 import type { Metadata } from "next";
+import { IBM_Plex_Mono, Inter } from "next/font/google";
 import { Providers } from "./providers";
 import { Nav } from "@/components/Nav";
+
+const mono = IBM_Plex_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-mono",
+  display: "swap",
+});
+
+const sans = Inter({
+  subsets: ["latin"],
+  variable: "--font-sans",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "Patrick Mwangi - Senior Software Engineer | Head of Engineering",
@@ -66,7 +80,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={`${mono.variable} ${sans.variable}`}
+    >
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
